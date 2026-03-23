@@ -393,14 +393,17 @@ const App = () => {
                     <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500"><Mail size={24}/></div>
                     <div>
                       <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('emailLbl')}</div>
-                      <div className="text-lg font-bold">nadisha@gmail.com</div>
+                      <div className="text-lg font-bold">nadeesha.creative@gmail.com</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500"><MapPin size={24}/></div>
                     <div>
                       <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('locLbl')}</div>
-                      <div className="text-lg font-bold">Horana, Sri Lanka</div>
+                      {/* I-link iti Google Maps */}
+                      <a href="https://www.google.com/maps/search/?api=1&query=Deraniyagala,+Sri+Lanka" target="_blank" rel="noreferrer" className="text-lg font-bold hover:text-pink-400 hover:underline transition-all cursor-pointer">
+                        Deraniyagala, Sri Lanka
+                      </a>
                     </div>
                   </div>
                 </div>
