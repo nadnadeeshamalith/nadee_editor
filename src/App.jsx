@@ -21,6 +21,8 @@ const translations = {
     portfolioSub: "මා විසින් සංස්කරණය කරන ලද කෙටි චිත්‍රපට, වෙළඳ දැන්වීම් සහ නිර්මාණාත්මක වීඩියෝ මෙතැනින් නැරඹිය හැක.",
     graphicsTitle1: "ග්‍රැෆික් ", graphicsTitle2: "නිර්මාණ",
     graphicsSub: "මා විසින් නිර්මාණය කරන ලද ලාංඡන, පෝස්ටර් සහ අනෙකුත් ග්‍රැෆික් නිර්මාණ එකතුව.",
+    photoTitle1: "මගේ ", photoTitle2: "ඡායාරූප",
+    photoSub: "මා විසින් රූපගත කරන ලද විශේෂ අවස්ථා සහ සුන්දර දසුන්.",
     statsProjects: "නිම කළ ව්‍යාපෘති", statsExperience: "වසරක අත්දැකීම්", statsClients: "තෘප්තිමත් පාරිභෝගිකයින්",
     contactTitle1: "මා හා ", contactTitle2: "සම්බන්ධ වන්න",
     contactSub: "ඔබගේ මීළඟ ව්‍යාපෘතිය සඳහා හෝ වීඩියෝ සංස්කරණ, ග්‍රැෆික් නිර්මාණ කටයුතු සඳහා මා සම්බන්ධ කරගන්න.",
@@ -47,6 +49,8 @@ const translations = {
     portfolioSub: "Watch some of the short films, commercials, and creative videos I have edited.",
     graphicsTitle1: "Graphic ", graphicsTitle2: "Designs",
     graphicsSub: "Explore my collection of logos, flyers, and other creative graphic designs.",
+    photoTitle1: "My ", photoTitle2: "Photography",
+    photoSub: "A collection of special moments and beautiful sceneries captured by me.",
     statsProjects: "Projects Completed", statsExperience: "Years Experience", statsClients: "Happy Clients",
     contactTitle1: "Get in ", contactTitle2: "Touch",
     contactSub: "Contact me for your next project, video editing, or graphic design needs.",
@@ -73,6 +77,8 @@ const translations = {
     portfolioSub: "நான் எடிட் செய்த சில குறும்படங்கள், விளம்பரங்கள் மற்றும் ஆக்கபூர்வமான வீடியோக்களை இங்கே பார்க்கலாம்.",
     graphicsTitle1: "கிராஃபிக் ", graphicsTitle2: "வடிவமைப்புகள்",
     graphicsSub: "நான் உருவாக்கிய லோகோக்கள், சுவரொட்டிகள் மற்றும் பிற கிராஃபிக் வடிவமைப்புகளை இங்கே காணலாம்.",
+    photoTitle1: "எனது ", photoTitle2: "புகைப்படங்கள்",
+    photoSub: "நான் எடுத்த சிறப்பு தருணங்கள் மற்றும் அழகான காட்சிகள்.",
     statsProjects: "முடிக்கப்பட்ட திட்டங்கள்", statsExperience: "வருட அனுபவம்", statsClients: "மகிழ்ச்சியான வாடிக்கையாளர்கள்",
     contactTitle1: "தொடர்பு ", contactTitle2: "கொள்ளுங்கள்",
     contactSub: "உங்கள் அடுத்த திட்டம், வீடியோ எடிட்டிங் அல்லது கிராஃபிக் வடிவமைப்பு தேவைகளுக்கு என்னை தொடர்பு கொள்ளவும்.",
@@ -230,6 +236,13 @@ const App = () => {
     { id: 2, title: "Logo Design", category: "Branding", image: "/design2.jpg" },
     { id: 3, title: "Flyer Design", category: "Print", image: "/design3.jpg" },
     { id: 4, title: "Banner Design", category: "Advertising", image: "/design4.jpg" }
+  ];
+
+  const photographyItems = [
+    { id: 1, title: "Nature Photography", category: "Nature", image: "/photo1.jpg" },
+    { id: 2, title: "Portrait Photography", category: "Portrait", image: "/photo2.jpg" },
+    { id: 3, title: "Event Photography", category: "Event", image: "/photo3.jpg" },
+    { id: 4, title: "Commercial Shoot", category: "Commercial", image: "/photo4.jpg" }
   ];
 
   return (
@@ -466,6 +479,47 @@ const App = () => {
                   </div>
                   <div className="absolute bottom-0 p-4 sm:p-6 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent w-full opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
                     <div className="text-blue-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 sm:mb-2">{item.category}</div>
+                    <h3 className="text-base sm:text-lg font-bold text-white">{item.title}</h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Photography Section */}
+          <div className="mt-20 sm:mt-24 border-t border-slate-800/50 pt-16">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-10 sm:mb-12">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">{t('photoTitle1')} <span className="text-emerald-500">{t('photoTitle2')}</span></h2>
+                <p className="text-slate-400 max-w-xl text-sm sm:text-base">{t('photoSub')}</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {photographyItems.map(item => (
+                <a 
+                  key={item.id} 
+                  href={item.image} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="group relative overflow-hidden rounded-[20px] sm:rounded-[24px] bg-slate-950 border border-slate-800 block aspect-square sm:aspect-[4/5] cursor-pointer"
+                >
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-all duration-700 group-hover:scale-110" 
+                    onError={(e) => {
+                      e.target.onerror = null; 
+                      e.target.src = "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=400"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
+                    <div className="p-3 sm:p-4 bg-white rounded-full text-slate-950 shadow-2xl">
+                      <Camera size={24} className="sm:w-6 sm:h-6 text-emerald-500"/>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 p-4 sm:p-6 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent w-full opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                    <div className="text-emerald-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 sm:mb-2">{item.category}</div>
                     <h3 className="text-base sm:text-lg font-bold text-white">{item.title}</h3>
                   </div>
                 </a>
