@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Video, Palette, Camera, Layers, PlayCircle, MonitorPlay, Mail, Phone, MapPin, Menu, X, ChevronRight, Facebook, Instagram, Youtube, Linkedin, Wand2, Loader2, Sparkles, Image as ImageIcon, User, Lock, LogOut, UserPlus, Globe2, Award, Users, CheckCircle, Quote } from 'lucide-react';
+import { Video, Palette, Camera, Layers, PlayCircle, MonitorPlay, Mail, Phone, MapPin, Menu, X, ChevronRight, Facebook, Instagram, Youtube, Linkedin, Wand2, Loader2, Sparkles, Image as ImageIcon, Globe2, Award, Users, CheckCircle, Quote, User } from 'lucide-react';
 
 // --- Translations Dictionary ---
 const translations = {
   si: {
     navHome: "මුල් පිටුව", navAbout: "මා ගැන", navServices: "සේවාවන්", navPortfolio: "නිර්මාණ", navContact: "සම්බන්ධ වන්න",
-    navLogin: "ලොග් වන්න", navLogout: "පිටවන්න", navSignUp: "ලියාපදිංචි වන්න",
     heroAvailable: "Available for Freelance Work",
     heroGreeting: "ආයුබෝවන්, මම K.D නදිශ මලිත් මිහිරංග",
     heroDesc: "සීමාවන් නොමැති පරිකල්පනයට නවීන තාක්ෂණයේ ජීවය මුසු කරමින්, ඔබගේ අදහස් සැබෑවක් කරන විශිෂ්ටතම දෘශ්‍ය නිර්මාණකරණය",
@@ -25,21 +24,13 @@ const translations = {
     statsProjects: "නිම කළ ව්‍යාපෘති", statsExperience: "වසරක අත්දැකීම්", statsClients: "තෘප්තිමත් පාරිභෝගිකයින්",
     contactTitle1: "මා හා ", contactTitle2: "සම්බන්ධ වන්න",
     contactSub: "ඔබගේ මීළඟ ව්‍යාපෘතිය සඳහා හෝ වීඩියෝ සංස්කරණ, ග්‍රැෆික් නිර්මාණ කටයුතු සඳහා මා සම්බන්ධ කරගන්න.",
-    loginReq: "කරුණාකර නිර්මාණ නැරඹීමට පළමුව ලොග් වන්න හෝ ලියාපදිංචි වන්න.",
-    aiReq: "AI විශේෂාංගය භාවිතා කිරීමට පළමුව ගිණුමක් සාදන්න හෝ ලොග් වන්න.",
-    phoneLbl: "දුරකථන", emailLbl: "විද්‍යුත් තැපෑල", locLbl: "ස්ථානය",
+    phoneLbl: "දුරකථන (WhatsApp)", emailLbl: "විද්‍යුත් තැපෑල", locLbl: "ස්ථානය",
     formName: "ඔබගේ නම", formEmail: "විද්‍යුත් තැපෑල", formMsg: "පණිවිඩය", formSend: "පණිවිඩය යවන්න",
     driveBtn: "Google Drive හරහා නිර්මාණ බලන්න", ytBtn: "මගේ YouTube නාලිකාවට පිවිසෙන්න",
-    loginHead: "ගිණුමට පිවිසෙන්න", regHead: "නව ගිණුමක් සාදන්න",
-    loginSub: "ඔබගේ විද්‍යුත් තැපෑල සහ මුරපදය ඇතුලත් කරන්න.", regSub: "ඔබගේ විස්තර ඇතුලත් කර නව ගිණුමක් සාදන්න.",
-    emailPlc: "විද්‍යුත් තැපෑල (Email)", passPlc: "මුරපදය (Password)", namePlc: "ඔබගේ නම (Name)",
-    noAcc: "ගිණුමක් නැද්ද? ", hasAcc: "දැනටමත් ගිණුමක් තිබේද? ",
-    btnGenerate: "Script එක හදන්න", btnGenerating: "හදමින් පවතී...", inputIdea: "උදා: අලුත් පාවහන් බ්‍රෑන්ඩ් එකක් / සැලූන් එකක්...",
-    logoutConfirmTitle: "පිටවීම තහවුරු කරන්න", logoutConfirmMsg: "ඔබට විශ්වාසද මෙම ගිණුමෙන් පිටවීමට අවශ්‍ය බව?", btnYes: "ඔව්, පිටවන්න", btnNo: "නැත"
+    btnGenerate: "Script එක හදන්න", btnGenerating: "හදමින් පවතී...", inputIdea: "උදා: අලුත් පාවහන් බ්‍රෑන්ඩ් එකක් / සැලූන් එකක්..."
   },
   en: {
     navHome: "Home", navAbout: "About", navServices: "Services", navPortfolio: "Portfolio", navContact: "Contact",
-    navLogin: "Login", navLogout: "Logout", navSignUp: "Sign Up",
     heroAvailable: "Available for Freelance Work",
     heroGreeting: "Hello, I am K.D Nadisha Malith Mihiranga",
     heroDesc: "Blending modern technology with limitless imagination to bring your ideas to life through outstanding visual design.",
@@ -59,17 +50,36 @@ const translations = {
     statsProjects: "Projects Completed", statsExperience: "Years Experience", statsClients: "Happy Clients",
     contactTitle1: "Get in ", contactTitle2: "Touch",
     contactSub: "Contact me for your next project, video editing, or graphic design needs.",
-    loginReq: "Please login or sign up first to view the portfolio.",
-    aiReq: "Please create an account or login first to use the AI feature.",
-    phoneLbl: "Phone", emailLbl: "Email", locLbl: "Location",
+    phoneLbl: "Phone (WhatsApp)", emailLbl: "Email", locLbl: "Location",
     formName: "Your Name", formEmail: "Email", formMsg: "Message", formSend: "Send Message",
     driveBtn: "View Work on Google Drive", ytBtn: "Visit My YouTube Channel",
-    loginHead: "Welcome Back", regHead: "Create an Account",
-    loginSub: "Enter your email and password to login.", regSub: "Enter your details to create a new account.",
-    emailPlc: "Email Address", passPlc: "Password", namePlc: "Full Name",
-    noAcc: "Don't have an account? ", hasAcc: "Already have an account? ",
-    btnGenerate: "Generate Script", btnGenerating: "Generating...", inputIdea: "Ex: A new shoe brand / a salon...",
-    logoutConfirmTitle: "Confirm Logout", logoutConfirmMsg: "Are you sure you want to log out of this account?", btnYes: "Yes, Logout", btnNo: "Cancel"
+    btnGenerate: "Generate Script", btnGenerating: "Generating...", inputIdea: "Ex: A new shoe brand / a salon..."
+  },
+  ta: {
+    navHome: "முகப்பு", navAbout: "பற்றி", navServices: "சேவைகள்", navPortfolio: "படைப்புகள்", navContact: "தொடர்பு",
+    heroAvailable: "Available for Freelance Work",
+    heroGreeting: "வணக்கம், நான் K.D நதிஷ மலித் மிஹிரங்க",
+    heroDesc: "நவீன தொழில்நுட்பத்தை எல்லையற்ற கற்பனையுடன் கலந்து சிறந்த காட்சி வடிவமைப்பின் மூலம் உங்கள் யோசனைகளை உயிர்ப்பிக்கிறேன்.",
+    btnViewWork: "படைப்புகளைக் காண்", btnContact: "தொடர்பு கொள்க",
+    aboutTitle1: "என்னை ", aboutTitle2: "பற்றி",
+    aboutP1: "நான் K.D நதிஷ மலித் மிஹிரங்க, ஒரு தொழில்முறை வீடியோ எடிட்டர், கிராஃபிக் டிசைனர் மற்றும் வீடியோகிராஃபர். இலங்கையின் முன்னணி நிறுவனமான விஜய கிராபிக்ஸ் இல் எனது மல்டிமீடியா கல்வியை முடித்தேன்.",
+    aboutP2: "3D அனிமேஷன் உட்பட பல்வேறு பாடங்களை நான் படித்திருந்தாலும், எனது முக்கிய ஆர்வமும் திறமையும் வீடியோ எடிட்டிங், கிராஃபிக் டிசைன் மற்றும் வீடியோகிராஃபி ஆகியவற்றில் உள்ளன.",
+    servicesTitle1: "எனது ", servicesTitle2: "நிபுணத்துவம்",
+    servicesSub: "விஜய கிராபிக்ஸ் நிறுவனத்தில் பெற்ற பயிற்சியுடன், நான் மிகவும் சிறந்து விளங்கும் முக்கிய துறைகள் இவை.",
+    aiIdeatorTitle1: "உங்கள் வணிகத்திற்கான ", aiIdeatorTitle2: "AI ஸ்கிரிப்ட்",
+    aiIdeatorSub: "வீடியோ செய்ய யோசனை இல்லையா? உங்கள் வணிகம் அல்லது தயாரிப்பை கீழே உள்ளிடவும், எனது AI உதவியாளர் உடனடியாக 30 வினாடி வீடியோ ஸ்கிரிப்ட் மற்றும் வண்ணத் தட்டுகளை உருவாக்கும்!",
+    aiCreationsTitle1: "எனது ", aiCreationsTitle2: "AI படைப்புகள்",
+    aiCreationsSub: "நவீன AI தொழில்நுட்பங்களைப் பயன்படுத்தி உருவாக்கப்பட்ட பட வடிவமைப்புகள், சினிமா வீடியோக்கள், அனிமேஷன்கள் மற்றும் இசை வடிவமைப்புகளின் தொகுப்பு.",
+    portfolioTitle1: "தொழில்முறை வீடியோ ", portfolioTitle2: "படைப்புகள்",
+    portfolioSub: "நான் எடிட் செய்த சில குறும்படங்கள், விளம்பரங்கள் மற்றும் ஆக்கபூர்வமான வீடியோக்களை இங்கே பார்க்கலாம்.",
+    testimonialsTitle1: "வாடிக்கையாளர் ", testimonialsTitle2: "கருத்து",
+    statsProjects: "முடிக்கப்பட்ட திட்டங்கள்", statsExperience: "வருட அனுபவம்", statsClients: "மகிழ்ச்சியான வாடிக்கையாளர்கள்",
+    contactTitle1: "தொடர்பு ", contactTitle2: "கொள்ளுங்கள்",
+    contactSub: "உங்கள் அடுத்த திட்டம், வீடியோ எடிட்டிங் அல்லது கிராஃபிக் வடிவமைப்பு தேவைகளுக்கு என்னை தொடர்பு கொள்ளவும்.",
+    phoneLbl: "தொலைபேசி (WhatsApp)", emailLbl: "மின்னஞ்சல்", locLbl: "இடம்",
+    formName: "உங்கள் பெயர்", formEmail: "மின்னஞ்சல்", formMsg: "செய்தி", formSend: "செய்தியை அனுப்பு",
+    driveBtn: "Google Drive இல் படைப்புகளைக் காண்", ytBtn: "எனது YouTube சேனலைப் பார்வையிடவும்",
+    btnGenerate: "ஸ்கிரிப்ட் உருவாக்கு", btnGenerating: "உருவாக்குகிறது...", inputIdea: "உதா: புதிய காலணி பிராண்ட் / சலூன்..."
   }
 };
 
@@ -77,11 +87,6 @@ const App = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [isLoginMode, setIsLoginMode] = useState(true);
-  const [loginMessage, setLoginMessage] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [clientBusiness, setClientBusiness] = useState('');
   const [aiConcept, setAiConcept] = useState(null);
   const [isGeneratingConcept, setIsGeneratingConcept] = useState(false);
@@ -100,25 +105,16 @@ const App = () => {
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setIsLoggedIn(true);
-    setShowLogin(false);
-  };
-
   const generateConcept = async () => {
-    if (!isLoggedIn) {
-      setLoginMessage(t('aiReq'));
-      setIsLoginMode(false);
-      setShowLogin(true);
-      return;
-    }
     if (!clientBusiness.trim()) return;
     setIsGeneratingConcept(true);
     setAiConcept(null);
     
     const apiKey = ""; // API Key provided by execution environment
-    const promptLang = selectedLanguage === 'en' ? 'English' : 'Sinhala';
+    let promptLang = 'Sinhala';
+    if (selectedLanguage === 'en') promptLang = 'English';
+    if (selectedLanguage === 'ta') promptLang = 'Tamil';
+    
     const prompt = `Create a creative 30-second video script and color palette for business: "${clientBusiness}" in ${promptLang} language. Be cinematic and creative.`;
 
     try {
@@ -143,11 +139,11 @@ const App = () => {
         <style>{`@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap');`}</style>
         <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-10 max-w-lg w-full shadow-2xl">
           <Globe2 className="text-purple-400 w-16 h-16 mx-auto mb-6" />
-          <h1 className="text-2xl font-bold text-white mb-8">Select Language / භාෂාව තෝරන්න</h1>
+          <h1 className="text-2xl font-bold text-white mb-8">Select Language / மொழி</h1>
           <div className="grid gap-4">
-            {['si', 'en'].map(lang => (
+            {['si', 'en', 'ta'].map(lang => (
               <button key={lang} onClick={() => setSelectedLanguage(lang)} className="p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-purple-500 text-xl font-bold text-slate-200 transition-all cursor-pointer">
-                {lang === 'si' ? 'සිංහල' : 'English'}
+                {lang === 'si' ? 'සිංහල' : lang === 'en' ? 'English' : 'தமிழ்'}
               </button>
             ))}
           </div>
@@ -176,15 +172,6 @@ const App = () => {
               <button key={sec} onClick={() => scrollToSection(sec)} className="text-sm font-medium hover:text-purple-400 transition-colors capitalize cursor-pointer">{t('nav' + sec.charAt(0).toUpperCase() + sec.slice(1))}</button>
             ))}
             <div className="w-px h-6 bg-slate-800 mx-2"></div>
-            {isLoggedIn ? (
-              <button onClick={() => setShowLogoutConfirm(true)} className="flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors text-sm font-bold cursor-pointer">
-                <LogOut size={18}/> {t('navLogout')}
-              </button>
-            ) : (
-              <button onClick={() => setShowLogin(true)} className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-bold cursor-pointer">
-                <User size={18}/> {t('navLogin')}
-              </button>
-            )}
             <button onClick={() => setSelectedLanguage(null)} className="p-2 bg-slate-800/50 hover:bg-slate-800 rounded-full transition-all cursor-pointer"><Globe2 size={18} /></button>
           </div>
 
@@ -200,11 +187,7 @@ const App = () => {
               <button key={sec} onClick={() => scrollToSection(sec)} className="block w-full text-left text-lg font-medium py-2 cursor-pointer">{t('nav' + sec.charAt(0).toUpperCase() + sec.slice(1))}</button>
             ))}
             <div className="h-px bg-slate-800 my-4"></div>
-            {isLoggedIn ? (
-              <button onClick={() => { setMobileMenuOpen(false); setShowLogoutConfirm(true); }} className="flex items-center gap-3 text-red-400 font-bold cursor-pointer"><LogOut size={20}/> {t('navLogout')}</button>
-            ) : (
-              <button onClick={() => { setMobileMenuOpen(false); setShowLogin(true); }} className="flex items-center gap-3 text-white font-bold cursor-pointer"><User size={20}/> {t('navLogin')}</button>
-            )}
+            <button onClick={() => { setMobileMenuOpen(false); setSelectedLanguage(null); }} className="flex items-center gap-3 text-white font-bold cursor-pointer"><Globe2 size={20}/> Change Language</button>
           </div>
         )}
       </nav>
@@ -345,7 +328,6 @@ const App = () => {
                 href={item.link} 
                 target="_blank" 
                 rel="noreferrer"
-                onClick={(e) => { if(!isLoggedIn) { e.preventDefault(); setLoginMessage(t('loginReq')); setShowLogin(true); } }}
                 className="group relative overflow-hidden rounded-[32px] bg-slate-950 border border-slate-800 block aspect-video cursor-pointer"
               >
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110" />
@@ -382,37 +364,66 @@ const App = () => {
                 </div>
                 
                 <div className="space-y-6">
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-500"><Phone size={24}/></div>
+                  {/* WhatsApp Link */}
+                  <div className="flex items-center gap-6 group">
+                    <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all"><Phone size={24}/></div>
                     <div>
                       <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('phoneLbl')}</div>
-                      <div className="text-lg font-bold">+94 77 229 1528</div>
+                      <a href="https://wa.me/94772291528" target="_blank" rel="noreferrer" className="text-lg font-bold hover:text-purple-400 transition-colors cursor-pointer">
+                        +94 77 229 1528
+                      </a>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500"><Mail size={24}/></div>
+                  
+                  {/* Email Link */}
+                  <div className="flex items-center gap-6 group">
+                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><Mail size={24}/></div>
                     <div>
                       <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('emailLbl')}</div>
-                      <div className="text-lg font-bold">nadeesha.creative@gmail.com</div>
+                      <a href="mailto:nadeesha.creative@gmail.com" className="text-lg font-bold hover:text-blue-400 transition-colors cursor-pointer">
+                        nadeesha.creative@gmail.com
+                      </a>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500"><MapPin size={24}/></div>
+
+                  {/* Location Link */}
+                  <div className="flex items-center gap-6 group">
+                    <div className="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all"><MapPin size={24}/></div>
                     <div>
                       <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('locLbl')}</div>
-                      {/* I-link iti Google Maps */}
-                      <a href="https://www.google.com/maps/search/?api=1&query=Deraniyagala,+Sri+Lanka" target="_blank" rel="noreferrer" className="text-lg font-bold hover:text-pink-400 hover:underline transition-all cursor-pointer">
+                      <a href="https://www.google.com/maps/search/Deraniyagala,+Sri+Lanka" target="_blank" rel="noreferrer" className="text-lg font-bold hover:text-pink-400 transition-colors cursor-pointer">
                         Deraniyagala, Sri Lanka
                       </a>
                     </div>
                   </div>
                 </div>
 
+                {/* Social Icons */}
                 <div className="flex gap-4 pt-4">
-                  {[Facebook, Instagram, Youtube, Linkedin].map((Icon, i) => (
-                    <button key={i} className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-purple-600 hover:-translate-y-1 transition-all cursor-pointer"><Icon size={20}/></button>
-                  ))}
+                  <a href="https://www.facebook.com/share/1GgLDj8CJg/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:-translate-y-1 transition-all cursor-pointer">
+                    <Facebook size={20}/>
+                  </a>
+                  <a href="https://youtube.com/@cinema24-h7v?si=bKOJtE1x8B9aQCEp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-red-600 hover:-translate-y-1 transition-all cursor-pointer">
+                    <Youtube size={20}/>
+                  </a>
+                  <a href="https://www.tiktok.com/@trueimpact6?_r=1&_t=ZS-94uF2mnUGJO" target="_blank" rel="noreferrer" className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-pink-600 hover:-translate-y-1 transition-all cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                  </a>
                 </div>
+
+                {/* TikTok QR Codes */}
+                <div className="pt-8 mt-8 border-t border-slate-800">
+                  <p className="text-slate-400 font-bold text-sm uppercase tracking-widest mb-4">Follow on TikTok</p>
+                  <div className="flex gap-4">
+                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl">
+                      <img src="/1.jpeg" alt="Nadee Editor TikTok" className="w-full h-full object-cover rounded-xl" />
+                    </div>
+                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl">
+                      <img src="/2.jpeg" alt="24 Cinema TikTok" className="w-full h-full object-cover rounded-xl" />
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
               <div className="bg-slate-800/50 p-12 lg:p-16 border-l border-slate-800">
@@ -446,63 +457,6 @@ const App = () => {
           <p className="text-slate-500 text-sm">© 2026 K.D Nadisha Malith Mihiranga. All rights reserved.</p>
         </div>
       </footer>
-
-      {/* Login Modal */}
-      {showLogin && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-300">
-           <div className="bg-slate-900 p-10 rounded-[40px] max-w-md w-full border border-slate-800 relative shadow-2xl">
-              <button onClick={() => setShowLogin(false)} className="absolute top-6 right-6 p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-all cursor-pointer"><X size={20}/></button>
-              
-              <div className="w-16 h-16 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-500 mx-auto mb-6">
-                {isLoginMode ? <Lock size={32}/> : <UserPlus size={32}/>}
-              </div>
-              
-              <h3 className="text-3xl font-bold text-center mb-2">{isLoginMode ? t('loginHead') : t('regHead')}</h3>
-              <p className="text-slate-400 text-center mb-8 text-sm">{loginMessage || (isLoginMode ? t('loginSub') : t('regSub'))}</p>
-              
-              <form onSubmit={handleLogin} className="space-y-4">
-                {!isLoginMode && (
-                  <div className="relative">
-                    <User className="absolute left-4 top-4 text-slate-500" size={20}/>
-                    <input type="text" placeholder={t('namePlc')} className="w-full pl-12 p-4 bg-slate-950 border border-slate-800 rounded-2xl focus:border-purple-500 outline-none transition-all" required />
-                  </div>
-                )}
-                <div className="relative">
-                  <Mail className="absolute left-4 top-4 text-slate-500" size={20}/>
-                  <input type="email" placeholder={t('emailPlc')} className="w-full pl-12 p-4 bg-slate-950 border border-slate-800 rounded-2xl focus:border-purple-500 outline-none transition-all" required />
-                </div>
-                <div className="relative">
-                  <Lock className="absolute left-4 top-4 text-slate-500" size={20}/>
-                  <input type="password" placeholder={t('passPlc')} className="w-full pl-12 p-4 bg-slate-950 border border-slate-800 rounded-2xl focus:border-purple-500 outline-none transition-all" required />
-                </div>
-                <button type="submit" className="w-full py-5 bg-purple-600 hover:bg-purple-500 rounded-2xl font-bold mt-4 shadow-xl shadow-purple-900/20 transition-all cursor-pointer">
-                  {isLoginMode ? t('navLogin') : t('navSignUp')}
-                </button>
-              </form>
-              
-              <button onClick={() => setIsLoginMode(!isLoginMode)} className="w-full mt-6 text-sm font-medium text-slate-400 hover:text-purple-400 transition-colors cursor-pointer">
-                {isLoginMode ? t('noAcc') : t('hasAcc')} <span className="text-purple-500 font-bold underline">{isLoginMode ? t('navSignUp') : t('navLogin')}</span>
-              </button>
-           </div>
-        </div>
-      )}
-
-      {/* Logout Confirmation */}
-      {showLogoutConfirm && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-slate-900 p-10 rounded-[32px] max-w-sm w-full border border-slate-800 text-center shadow-2xl">
-            <div className="w-20 h-20 bg-red-600/10 rounded-full flex items-center justify-center text-red-500 mx-auto mb-6">
-              <LogOut size={40}/>
-            </div>
-            <h3 className="text-2xl font-bold mb-4">{t('logoutConfirmTitle')}</h3>
-            <p className="text-slate-400 mb-10 leading-relaxed">{t('logoutConfirmMsg')}</p>
-            <div className="flex gap-4">
-              <button onClick={() => setShowLogoutConfirm(false)} className="flex-1 p-4 border border-slate-700 rounded-2xl font-bold hover:bg-slate-800 transition-all cursor-pointer">{t('btnNo')}</button>
-              <button onClick={() => { setIsLoggedIn(false); setShowLogoutConfirm(false); }} className="flex-1 p-4 bg-red-600 hover:bg-red-500 rounded-2xl font-bold shadow-xl shadow-red-900/20 transition-all cursor-pointer">{t('btnYes')}</button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
