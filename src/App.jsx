@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Video, Palette, Camera, Layers, PlayCircle, MonitorPlay, Mail, Phone, MapPin, Menu, X, ChevronRight, Facebook, Instagram, Youtube, Linkedin, Wand2, Loader2, Sparkles, Image as ImageIcon, Globe2, Award, Users, CheckCircle, Quote, User } from 'lucide-react';
+import { Video, Palette, Camera, Layers, PlayCircle, MonitorPlay, Mail, Phone, MapPin, Menu, X, ChevronRight, Facebook, Instagram, Youtube, Linkedin, Wand2, Loader2, Sparkles, Image as ImageIcon, Globe2, Award, Users, CheckCircle, Quote, User, Download, Check, Leaf, Store, Clock, ExternalLink } from 'lucide-react';
 
 // --- Translations Dictionary ---
 const translations = {
   si: {
     navHome: "මුල් පිටුව", navAbout: "මා ගැන", navServices: "සේවාවන්", navPortfolio: "නිර්මාණ", navContact: "සම්බන්ධ වන්න",
-    heroAvailable: "Available for Freelance Work",
+    heroAvailable: "වෘත්තීය අවස්ථාවන් සඳහා සූදානම්",
     heroGreeting: "ආයුබෝවන්, මම K.D නදිශ මලිත් මිහිරංග",
     heroDesc: "සීමාවන් නොමැති පරිකල්පනයට නවීන තාක්ෂණයේ ජීවය මුසු කරමින්, ඔබගේ අදහස් සැබෑවක් කරන විශිෂ්ටතම දෘශ්‍ය නිර්මාණකරණය",
-    btnViewWork: "නිර්මාණ බලන්න", btnContact: "සම්බන්ධ වන්න",
+    btnViewWork: "නිර්මාණ බලන්න", btnContact: "සම්බන්ධ වන්න", btnDownloadCV: "CV එක බාගත කරන්න",
     aboutTitle1: "මා ", aboutTitle2: "ගැන",
     aboutP1: "මම K.D නදිශ මලිත් මිහිරංග. මම වෘත්තීය මට්ටමේ වීඩියෝ සංස්කරණ ශිල්පියෙකු, ග්‍රැෆික් නිර්මාණකරුවෙකු සහ ඡායාරූප/වීඩියෝ ශිල්පියෙකු වෙමි. මම මගේ වෘත්තීය බහුමාධ්‍ය අධ්‍යාපනය සම්පූර්ණ කළේ Wijeya Graphics ආයතනයෙනි.",
     aboutP2: "එහිදී 3D සජීවීකරණය ඇතුළු විෂය පථයන් රැසක් මා හැදෑරුවද, මගේ දැඩි ආශාව සහ ඉහළම දක්ෂතාවය ඇත්තේ වීඩියෝ එඩිටින්, ග්‍රැෆික් ඩිසයින් සහ වීඩියෝග්‍රැෆි යන අංශයන්හි වේ.",
-    servicesTitle1: "මගේ ", servicesTitle2: "විශේෂඥතාවයන්",
-    servicesSub: "Wijeya Graphics ආයතනයෙන් ලද පුහුණුවත් සමග, මා වඩාත්ම කැමති සහ ඉහළම කුසලතාවයක් දක්වන ප්‍රධාන ක්ෂේත්‍රයන් මෙසේය.",
+    skillsTitle: "මගේ කුසලතා",
+    servicesTitle1: "මගේ ", servicesTitle2: "ව්‍යාපාර",
+    servicesSub: "මගේ නවතම ව්‍යාපාරික ආරම්භයන් සහ ඉදිරි සැලසුම්.",
     aiIdeatorTitle1: "ඔබේ ව්‍යාපාරයට ", aiIdeatorTitle2: "AI Script එකක්",
     aiIdeatorSub: "වීඩියෝවක් කරන්න අදහසක් නැද්ද? ඔබේ ව්‍යාපාරය හෝ නිෂ්පාදනය පහතින් ඇතුලත් කරන්න. මගේ AI සහයකයා ඒ සඳහා තත්පර 30ක ආකර්ෂණීය වීඩියෝ පිටපතක් සහ වර්ණ රටාවක් ක්ෂණිකව යෝජනා කරාවි!",
-    aiCreationsTitle1: "මගේ ", aiCreationsTitle2: "AI නිර්මාණ",
-    aiCreationsSub: "නවීන කෘතිම බුද්ධි තාක්ෂණයන් භාවිතයෙන් මා විසින් සිදුකළ Image Design, සිනමැටික් වීඩියෝ, ඇනිමේෂන් සහ Music Design නිර්මාණ එකතුව.",
     portfolioTitle1: "වෘත්තීය වීඩියෝ ", portfolioTitle2: "නිර්මාණ",
     portfolioSub: "මා විසින් සංස්කරණය කරන ලද කෙටි චිත්‍රපට, වෙළඳ දැන්වීම් සහ නිර්මාණාත්මක වීඩියෝ මෙතැනින් නැරඹිය හැක.",
-    testimonialsTitle1: "පාරිභෝගික ", testimonialsTitle2: "අදහස්",
+    graphicsTitle1: "ග්‍රැෆික් ", graphicsTitle2: "නිර්මාණ",
+    graphicsSub: "මා විසින් නිර්මාණය කරන ලද ලාංඡන, පෝස්ටර් සහ අනෙකුත් ග්‍රැෆික් නිර්මාණ එකතුව.",
     statsProjects: "නිම කළ ව්‍යාපෘති", statsExperience: "වසරක අත්දැකීම්", statsClients: "තෘප්තිමත් පාරිභෝගිකයින්",
     contactTitle1: "මා හා ", contactTitle2: "සම්බන්ධ වන්න",
     contactSub: "ඔබගේ මීළඟ ව්‍යාපෘතිය සඳහා හෝ වීඩියෝ සංස්කරණ, ග්‍රැෆික් නිර්මාණ කටයුතු සඳහා මා සම්බන්ධ කරගන්න.",
@@ -31,22 +31,22 @@ const translations = {
   },
   en: {
     navHome: "Home", navAbout: "About", navServices: "Services", navPortfolio: "Portfolio", navContact: "Contact",
-    heroAvailable: "Available for Freelance Work",
+    heroAvailable: "Open to Career Opportunities",
     heroGreeting: "Hello, I am K.D Nadisha Malith Mihiranga",
     heroDesc: "Blending modern technology with limitless imagination to bring your ideas to life through outstanding visual design.",
-    btnViewWork: "View Work", btnContact: "Contact Me",
+    btnViewWork: "View Work", btnContact: "Contact Me", btnDownloadCV: "Download CV",
     aboutTitle1: "About ", aboutTitle2: "Me",
     aboutP1: "I am K.D Nadisha Malith Mihiranga, a professional Video Editor, Graphic Designer, and Videographer. I completed my multimedia education at Wijeya Graphics, a leading institute in Sri Lanka.",
     aboutP2: "Although I studied various subjects including 3D Animation, my core passion and highest skills lie in Video Editing, Graphic Design, and Videography.",
-    servicesTitle1: "My ", servicesTitle2: "Expertise",
-    servicesSub: "With the training received from Wijeya Graphics, these are the main areas I excel in.",
+    skillsTitle: "Software Proficiency",
+    servicesTitle1: "My ", servicesTitle2: "Ventures",
+    servicesSub: "My latest business startups and upcoming plans.",
     aiIdeatorTitle1: "An AI Script for ", aiIdeatorTitle2: "Your Business",
     aiIdeatorSub: "No ideas for a video? Enter your business or product below, and my AI assistant will instantly generate a 30-second video script and color palette!",
-    aiCreationsTitle1: "My ", aiCreationsTitle2: "AI Creations",
-    aiCreationsSub: "A collection of AI Image Designs, Cinematic Videos, Animations, and Music Designs created using modern AI prompts.",
     portfolioTitle1: "Professional Video ", portfolioTitle2: "Creations",
     portfolioSub: "Watch some of the short films, commercials, and creative videos I have edited.",
-    testimonialsTitle1: "Client ", testimonialsTitle2: "Feedback",
+    graphicsTitle1: "Graphic ", graphicsTitle2: "Designs",
+    graphicsSub: "Explore my collection of logos, flyers, and other creative graphic designs.",
     statsProjects: "Projects Completed", statsExperience: "Years Experience", statsClients: "Happy Clients",
     contactTitle1: "Get in ", contactTitle2: "Touch",
     contactSub: "Contact me for your next project, video editing, or graphic design needs.",
@@ -57,22 +57,22 @@ const translations = {
   },
   ta: {
     navHome: "முகப்பு", navAbout: "பற்றி", navServices: "சேவைகள்", navPortfolio: "படைப்புகள்", navContact: "தொடர்பு",
-    heroAvailable: "Available for Freelance Work",
+    heroAvailable: "தொழில் வாய்ப்புகளுக்கு தயாராக உள்ளது",
     heroGreeting: "வணக்கம், நான் K.D நதிஷ மலித் மிஹிரங்க",
     heroDesc: "நவீன தொழில்நுட்பத்தை எல்லையற்ற கற்பனையுடன் கலந்து சிறந்த காட்சி வடிவமைப்பு மூலம் உங்கள் யோசனைகளை உயிர்ப்பிக்கிறேன்.",
-    btnViewWork: "படைப்புகளைக் காண்", btnContact: "தொடர்பு கொள்க",
+    btnViewWork: "படைப்புகளைக் காண்", btnContact: "தொடர்பு கொள்க", btnDownloadCV: "CV ஐப் பதிவிறக்குக",
     aboutTitle1: "என்னை ", aboutTitle2: "பற்றி",
     aboutP1: "நான் K.D நதிஷ மலித் மிஹிரங்க, ஒரு தொழில்முறை வீடியோ எடிட்டர், கிராஃபிக் டிசைனர் மற்றும் வீடியோகிராஃபர். இலங்கையின் முன்னணி நிறுவனமான விஜய கிராபிக்ஸ் இல் எனது மல்டிமீடியா கல்வியை முடித்தேன்.",
     aboutP2: "3D அனிமேஷன் உட்பட பல்வேறு பாடங்களை நான் படித்திருந்தாலும், எனது முக்கிய ஆர்வமும் திறமையும் வீடியோ எடிட்டிங், கிராஃபிக் டிசைன் மற்றும் வீடியோகிராஃபி ஆகியவற்றில் உள்ளன.",
-    servicesTitle1: "எனது ", servicesTitle2: "நிபுணத்துவம்",
-    servicesSub: "விஜய கிராபிக்ஸ் நிறுவனத்தில் பெற்ற பயிற்சியுடன், நான் மிகவும் சிறந்து விளங்கும் முக்கிய துறைகள் இவை.",
+    skillsTitle: "மென்பொருள் திறன்கள்",
+    servicesTitle1: "எனது ", servicesTitle2: "வணிகங்கள்",
+    servicesSub: "எனது சமீபத்திய வணிக தொடக்கங்கள் மற்றும் வரவிருக்கும் திட்டங்கள்.",
     aiIdeatorTitle1: "உங்கள் வணிகத்திற்கான ", aiIdeatorTitle2: "AI ஸ்கிரிப்ட்",
     aiIdeatorSub: "வீடியோ செய்ய யோசனை இல்லையா? உங்கள் வணிகம் அல்லது தயாரிப்பை கீழே உள்ளிடவும், எனது AI உதவியாளர் உடனடியாக 30 வினாடி வீடியோ ஸ்கிரிப்ட் மற்றும் வண்ணத் தட்டுகளை உருவாக்கும்!",
-    aiCreationsTitle1: "எனது ", aiCreationsTitle2: "AI படைப்புகள்",
-    aiCreationsSub: "நவீன AI தொழில்நுட்பங்களைப் பயன்படுத்தி உருவாக்கப்பட்ட பட வடிவமைப்புகள், சினிமா வீடியோக்கள், அனிமேஷன்கள் மற்றும் இசை வடிவமைப்புகளின் தொகுப்பு.",
     portfolioTitle1: "தொழில்முறை வீடியோ ", portfolioTitle2: "படைப்புகள்",
-    portfolioSub: "நான் எடிட் செய்த சில குறும்படங்கள், விளம்பரங்கள் மற்றும் ஆக்கபூர்වமான வீடியோக்களை இங்கே பார்க்கலாம்.",
-    testimonialsTitle1: "வாடிக்கையாளர் ", testimonialsTitle2: "கருத்து",
+    portfolioSub: "நான் எடிட் செய்த சில குறும்படங்கள், விளம்பரங்கள் மற்றும் ஆக்கபூர்வமான வீடியோக்களை இங்கே பார்க்கலாம்.",
+    graphicsTitle1: "கிராஃபிக் ", graphicsTitle2: "வடிவமைப்புகள்",
+    graphicsSub: "நான் உருவாக்கிய லோகோக்கள், சுவரொட்டிகள் மற்றும் பிற கிராஃபிக் வடிவமைப்புகளை இங்கே காணலாம்.",
     statsProjects: "முடிக்கப்பட்ட திட்டங்கள்", statsExperience: "வருட அனுபவம்", statsClients: "மகிழ்ச்சியான வாடிக்கையாளர்கள்",
     contactTitle1: "தொடர்பு ", contactTitle2: "கொள்ளுங்கள்",
     contactSub: "உங்கள் அடுத்த திட்டம், வீடியோ எடிட்டிங் அல்லது கிராஃபிக் வடிவமைப்பு தேவைகளுக்கு என்னை தொடர்பு கொள்ளவும்.",
@@ -82,6 +82,56 @@ const translations = {
     btnGenerate: "ஸ்கிரிப்ட் உருவாக்கு", btnGenerating: "உருவாக்குகிறது...", inputIdea: "உதா: புதிய காலணி பிராண்ட் / சலூன்..."
   }
 };
+
+// Skills Data
+const softwareSkills = [
+  { name: "Adobe Premiere Pro", level: 90, color: "bg-purple-500" },
+  { name: "Adobe Photoshop", level: 80, color: "bg-blue-500" },
+  { name: "Artificial Intelligence (AI)", level: 80, color: "bg-pink-500" },
+  { name: "Adobe Illustrator", level: 75, color: "bg-orange-500" },
+  { name: "After Effects", level: 60, color: "bg-indigo-500" },
+  { name: "DaVinci Resolve", level: 40, color: "bg-emerald-500" }
+];
+
+// Ventures Data (Replacing Services)
+const venturesList = [
+  {
+    title: { si: "මිරිස් පැල තවාන", en: "Chili Plant Nursery", ta: "மிளகாய் செடிகள்" },
+    status: { si: "වෙබ් අඩවියට පිවිසෙන්න", en: "Visit Website", ta: "இணையதளத்திற்குச் செல்லவும்" },
+    icon: Leaf,
+    link: "#", // මෙතනට ඔයාගේ මිරිස් පැල වෙබ් අඩවියේ ලින්ක් එක දාන්න
+    isReady: true,
+    features: {
+      si: ["උසස් තත්ත්වයේ පැල", "ගෙදර හැදූ නිෂ්පාදන", "සාධාරණ මිල ගණන්"],
+      en: ["High-Quality Plants", "Homegrown Products", "Reasonable Prices"],
+      ta: ["உயர்தர செடிகள்", "வீட்டில் வளர்க்கப்பட்டவை", "நியாயமான விலை"]
+    }
+  },
+  {
+    title: { si: "නව ව්‍යාපාරය", en: "New Venture", ta: "புதிய வணிகம்" },
+    status: { si: "ළඟදීම...", en: "Coming Soon...", ta: "விரைவில்..." },
+    icon: Store,
+    link: "#",
+    isReady: false,
+    features: {
+      si: ["නව නිෂ්පාදන", "සුවිශේෂී සේවාවන්", "ළඟදීම විවෘත වේ"],
+      en: ["New Products", "Exclusive Services", "Opening Soon"],
+      ta: ["புதிய தயாரிப்புகள்", "பிரத்யேக சேவைகள்", "விரைவில் திறக்கப்படும்"]
+    }
+  },
+  {
+    title: { si: "නව ව්‍යාපාරය", en: "New Venture", ta: "புதிய வணிகம்" },
+    status: { si: "ළඟදීම...", en: "Coming Soon...", ta: "விரைவில்..." },
+    icon: Clock,
+    link: "#",
+    isReady: false,
+    features: {
+      si: ["තවත් අලුත් වැඩක්", "නව අත්දැකීමක්", "ළඟදීම විවෘත වේ"],
+      en: ["Another New Project", "New Experience", "Opening Soon"],
+      ta: ["மற்றொரு புதிய திட்டம்", "புதிய அனுபவம்", "விரைவில் திறக்கப்படும்"]
+    }
+  }
+];
 
 const App = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
@@ -104,7 +154,10 @@ const App = () => {
   const scrollToSection = (id) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   const handleInputChange = (e) => {
@@ -150,7 +203,7 @@ const App = () => {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-center" style={{ fontFamily: "'Noto Sans Sinhala', sans-serif" }}>
         <style>{`@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap');`}</style>
-        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-10 max-w-lg w-full shadow-2xl">
+        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 md:p-10 max-w-lg w-full shadow-2xl">
           <Globe2 className="text-purple-400 w-16 h-16 mx-auto mb-6" />
           <h1 className="text-2xl font-bold text-white mb-8">Select Language / மொழி</h1>
           <div className="grid gap-4">
@@ -166,9 +219,17 @@ const App = () => {
   }
 
   const portfolioItems = [
-    { id: 1, title: "Broadcast Program", category: "Video Editing", image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=800", link: "https://drive.google.com/drive/folders/1nLSW_lUYv-fv5Dcq-8ygfNGlCXsMql38?usp=sharing" },
+    { id: 1, title: "Broadcast Program", category: "Video Editing", image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=800", link: "https://drive.google.com/drive/folders/1nLSW_lUYv-fv5Dcq-8ygfNGlCXsMql38?usp=drive_link" },
     { id: 2, title: "Cinema 24 - Short Film", category: "Short Film", image: "https://images.unsplash.com/photo-1574267432553-4b4628081524?auto=format&fit=crop&q=80&w=800", link: "https://youtube.com/@cinema24-h7v?si=bKOJtE1x8B9aQCEp" },
     { id: 3, title: "TV Commercial", category: "Commercial", image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800", link: "https://drive.google.com/drive/folders/1nLSW_lUYv-fv5Dcq-8ygfNGlCXsMql38?usp=sharing" },
+    { id: 4, title: "AI Music", category: "Audio Generation", image: "https://images.unsplash.com/photo-1619983081563-430f63602796?auto=format&fit=crop&q=80&w=800", link: "https://drive.google.com/drive/folders/10EKfkQLY_34ota8NMKdk0uKPduD88BKj?usp=sharing" }
+  ];
+
+  const graphicItems = [
+    { id: 1, title: "Social Media Design", category: "Graphics", image: "/design1.jpg" },
+    { id: 2, title: "Logo Design", category: "Branding", image: "/design2.jpg" },
+    { id: 3, title: "Flyer Design", category: "Print", image: "/design3.jpg" },
+    { id: 4, title: "Banner Design", category: "Advertising", image: "/design4.jpg" }
   ];
 
   return (
@@ -176,7 +237,7 @@ const App = () => {
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap');`}</style>
       
       {/* Navbar */}
-      <nav className={`fixed w-full z-50 transition-all ${isScrolled ? 'bg-slate-950/90 backdrop-blur-md py-3 shadow-xl' : 'bg-transparent py-5'}`}>
+      <nav className={`fixed w-full z-50 transition-all ${isScrolled ? 'bg-slate-950/90 backdrop-blur-md py-3 shadow-xl' : 'bg-slate-950 lg:bg-transparent py-4 lg:py-5 border-b lg:border-none border-slate-800'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="text-2xl font-bold text-purple-400 tracking-tighter">Nadee_Editor</div>
           
@@ -188,57 +249,61 @@ const App = () => {
             <button onClick={() => setSelectedLanguage(null)} className="p-2 bg-slate-800/50 hover:bg-slate-800 rounded-full transition-all cursor-pointer"><Globe2 size={18} /></button>
           </div>
 
-          <button className="lg:hidden p-2 cursor-pointer" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X/> : <Menu/>}
+          <button className="lg:hidden p-2 cursor-pointer text-slate-300 hover:text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X size={28}/> : <Menu size={28}/>}
           </button>
         </div>
 
         {mobileMenuOpen && (
           <div className="lg:hidden bg-slate-900 border-t border-slate-800 p-6 space-y-4 absolute top-full left-0 w-full shadow-2xl animate-in slide-in-from-top duration-300">
             {['home', 'about', 'services', 'portfolio', 'contact'].map(sec => (
-              <button key={sec} onClick={() => scrollToSection(sec)} className="block w-full text-left text-lg font-medium py-2 cursor-pointer">{t('nav' + sec.charAt(0).toUpperCase() + sec.slice(1))}</button>
+              <button key={sec} onClick={() => scrollToSection(sec)} className="block w-full text-left text-lg font-medium py-3 border-b border-slate-800/50 cursor-pointer">{t('nav' + sec.charAt(0).toUpperCase() + sec.slice(1))}</button>
             ))}
-            <div className="h-px bg-slate-800 my-4"></div>
-            <button onClick={() => { setMobileMenuOpen(false); setSelectedLanguage(null); }} className="flex items-center gap-3 text-white font-bold cursor-pointer"><Globe2 size={20}/> Change Language</button>
+            <button onClick={() => { setMobileMenuOpen(false); setSelectedLanguage(null); }} className="flex items-center gap-3 text-purple-400 font-bold cursor-pointer py-3"><Globe2 size={20}/> Change Language</button>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center pt-20 overflow-hidden relative">
+      <section id="home" className="min-h-screen flex items-center pt-24 lg:pt-20 overflow-hidden relative">
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
         
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-bold">
-              <Sparkles size={16}/> {t('heroAvailable')}
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 py-12 lg:py-0">
+          <div className="space-y-6 lg:space-y-8 animate-in fade-in slide-in-from-left duration-1000">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs sm:text-sm font-bold">
+              <User size={16} className="text-purple-400"/> {t('heroAvailable')}
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-              <span className="text-2xl block text-slate-400 font-medium mb-2">{t('heroGreeting')}</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
+              <span className="text-xl sm:text-2xl block text-slate-400 font-medium mb-2">{t('heroGreeting')}</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-slate-400">Creative Editor & Visual Designer</span>
             </h1>
-            <p className="text-slate-400 text-lg leading-relaxed max-w-xl">{t('heroDesc')}</p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <button onClick={() => scrollToSection('portfolio')} className="px-10 py-5 bg-white text-slate-950 rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-white/5 cursor-pointer">{t('btnViewWork')}</button>
-              <button onClick={() => scrollToSection('contact')} className="px-10 py-5 border border-slate-700 rounded-2xl font-bold hover:bg-slate-900 transition-all cursor-pointer">{t('btnContact')}</button>
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl">{t('heroDesc')}</p>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
+              <button onClick={() => scrollToSection('portfolio')} className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white text-slate-950 rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-white/5 cursor-pointer text-center">{t('btnViewWork')}</button>
+              <button onClick={() => scrollToSection('contact')} className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-slate-700 rounded-2xl font-bold hover:bg-slate-900 transition-all cursor-pointer text-center">{t('btnContact')}</button>
+              {/* Download CV Button */}
+              <a href="/cv.pdf" download className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-purple-600/50 text-purple-400 bg-purple-600/5 rounded-2xl font-bold hover:bg-purple-600 hover:text-white transition-all cursor-pointer text-center flex items-center justify-center gap-2">
+                <Download size={20}/> {t('btnDownloadCV')}
+              </a>
             </div>
           </div>
-          <div className="relative group lg:block hidden">
+          
+          <div className="relative group mt-8 lg:mt-0 max-w-sm mx-auto w-full lg:max-w-none">
             <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative bg-slate-900 border border-slate-800 p-8 rounded-3xl rotate-2 hover:rotate-0 transition-transform duration-500">
+            <div className="relative bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl rotate-2 hover:rotate-0 transition-transform duration-500">
                <div className="grid grid-cols-2 gap-4">
                  <div className="aspect-square bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700">
-                   <Video size={48} className="text-purple-500"/>
+                   <Video size={40} className="text-purple-500 sm:w-12 sm:h-12"/>
                  </div>
                  <div className="aspect-square bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700">
-                   <Palette size={48} className="text-blue-500"/>
+                   <Palette size={40} className="text-blue-500 sm:w-12 sm:h-12"/>
                  </div>
                  <div className="aspect-square bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700">
-                   <Camera size={48} className="text-pink-500"/>
+                   <Camera size={40} className="text-pink-500 sm:w-12 sm:h-12"/>
                  </div>
                  <div className="aspect-square bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700">
-                   <Layers size={48} className="text-emerald-500"/>
+                   <Layers size={40} className="text-emerald-500 sm:w-12 sm:h-12"/>
                  </div>
                </div>
             </div>
@@ -246,88 +311,83 @@ const App = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-slate-900/30">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1 space-y-8">
-              <h2 className="text-4xl font-bold">{t('aboutTitle1')}<span className="text-purple-500">{t('aboutTitle2')}</span></h2>
-              <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
-                <p>{t('aboutP1')}</p>
-                <p>{t('aboutP2')}</p>
-              </div>
-              <div className="grid grid-cols-3 gap-8 pt-8">
-                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all">
-                  <div className="text-3xl font-bold text-white">50+</div>
-                  <div className="text-xs text-slate-500 uppercase mt-2 tracking-widest">{t('statsProjects')}</div>
+      {/* Ventures Section */}
+      <section id="services" className="py-16 lg:py-24 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">{t('servicesTitle1')} <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-green-500">{t('servicesTitle2')}</span></h2>
+            <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg">{t('servicesSub')}</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+            {venturesList.map((venture, idx) => {
+              const lang = selectedLanguage || 'si';
+              return (
+                <div key={idx} className="bg-slate-900 border border-slate-800 rounded-[32px] p-8 hover:border-emerald-500/50 hover:-translate-y-2 transition-all duration-300 group shadow-xl relative overflow-hidden">
+                  {!venture.isReady && (
+                    <div className="absolute top-6 right-6 px-3 py-1 bg-slate-800/80 text-slate-400 text-xs font-bold rounded-full border border-slate-700 backdrop-blur-md">
+                      {venture.status[lang]}
+                    </div>
+                  )}
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors ${venture.isReady ? 'bg-emerald-500/10 group-hover:bg-emerald-500/20' : 'bg-slate-800'}`}>
+                    <venture.icon size={32} className={`${venture.isReady ? 'text-emerald-400 group-hover:text-emerald-300' : 'text-slate-500'}`} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-6">{venture.title[lang]}</h3>
+                  <div className="space-y-3 mb-8">
+                    {venture.features[lang].map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-3 text-slate-400">
+                        <Check size={18} className={`${venture.isReady ? 'text-emerald-500' : 'text-slate-600'} shrink-0 mt-0.5`} />
+                        <span className="text-sm font-medium">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {venture.isReady ? (
+                    <a href={venture.link} target="_blank" rel="noreferrer" className="w-full py-4 bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white border border-emerald-600/30 rounded-xl font-bold transition-all text-sm cursor-pointer flex items-center justify-center gap-2">
+                      <ExternalLink size={18}/> {venture.status[lang]}
+                    </a>
+                  ) : (
+                    <button disabled className="w-full py-4 bg-slate-800 text-slate-500 rounded-xl font-bold text-sm cursor-not-allowed flex items-center justify-center gap-2 border border-slate-700/50">
+                      <Clock size={18}/> {venture.status[lang]}
+                    </button>
+                  )}
                 </div>
-                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all">
-                  <div className="text-3xl font-bold text-white">1+</div>
-                  <div className="text-xs text-slate-500 uppercase mt-2 tracking-widest">{t('statsExperience')}</div>
-                </div>
-                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all">
-                  <div className="text-3xl font-bold text-white">100%</div>
-                  <div className="text-xs text-slate-500 uppercase mt-2 tracking-widest">{t('statsClients')}</div>
-                </div>
-              </div>
-            </div>
-            
-            {/* --- Enhanced Profile Image Section --- */}
-            <div className="order-1 lg:order-2">
-              <div className="relative group">
-                {/* Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-[50px] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                
-                <div className="aspect-[3/4] md:aspect-square bg-slate-900 border-2 border-slate-800 rounded-[48px] flex items-center justify-center relative overflow-hidden shadow-2xl transition-all duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent z-10 pointer-events-none"></div>
-                  <img 
-                    src="/profile.jpg" 
-                    alt="Nadeesha Malith Profile" 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                    style={{ objectPosition: 'center 20%' }}
-                    onError={(e) => {
-                      e.target.onerror = null; 
-                      e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* AI Tool Section */}
-      <section id="ai-ideator" className="py-24 relative overflow-hidden">
+      <section id="ai-ideator" className="py-16 lg:py-24 bg-slate-900/30 relative overflow-hidden">
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">{t('aiIdeatorTitle1')} <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">{t('aiIdeatorTitle2')}</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg mb-12">{t('aiIdeatorSub')}</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">{t('aiIdeatorTitle1')} <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">{t('aiIdeatorTitle2')}</span></h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg mb-8 sm:mb-12">{t('aiIdeatorSub')}</p>
           
-          <div className="max-w-3xl mx-auto bg-slate-900 p-8 rounded-[32px] border border-slate-800 shadow-2xl">
+          <div className="max-w-3xl mx-auto bg-slate-900 p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-slate-800 shadow-2xl">
             <div className="flex flex-col md:flex-row gap-4">
               <input 
                 type="text" 
                 value={clientBusiness} 
                 onChange={(e) => setClientBusiness(e.target.value)} 
                 placeholder={t('inputIdea')} 
-                className="flex-1 bg-slate-950 border border-slate-800 p-5 rounded-2xl text-white outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+                className="flex-1 bg-slate-950 border border-slate-800 p-4 sm:p-5 rounded-xl sm:rounded-2xl text-white outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
               />
               <button 
                 onClick={generateConcept} 
                 disabled={isGeneratingConcept} 
-                className="px-8 py-5 bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-purple-900/20 disabled:opacity-50 cursor-pointer"
+                className="px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl sm:rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-purple-900/20 disabled:opacity-50 cursor-pointer text-sm sm:text-base"
               >
                 {isGeneratingConcept ? <Loader2 className="animate-spin"/> : <Sparkles/>} {isGeneratingConcept ? t('btnGenerating') : t('btnGenerate')}
               </button>
             </div>
             
             {aiConcept && (
-              <div className="mt-8 p-8 bg-slate-950 rounded-2xl text-left border border-purple-500/20 animate-in fade-in zoom-in duration-500">
-                <div className="flex items-center gap-3 mb-4 text-purple-400 font-bold border-b border-slate-800 pb-4">
+              <div className="mt-6 sm:mt-8 p-6 sm:p-8 bg-slate-950 rounded-2xl text-left border border-purple-500/20 animate-in fade-in zoom-in duration-500">
+                <div className="flex items-center gap-3 mb-4 text-purple-400 font-bold border-b border-slate-800 pb-4 text-sm sm:text-base">
                   <Wand2 size={20}/> 
                   <span>AI Generated Vision</span>
                 </div>
-                <div className="text-slate-300 leading-relaxed whitespace-pre-line text-lg">
+                <div className="text-slate-300 leading-relaxed whitespace-pre-line text-sm sm:text-lg overflow-hidden">
                   {aiConcept}
                 </div>
               </div>
@@ -337,43 +397,84 @@ const App = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-24 bg-slate-900/30">
+      <section id="portfolio" className="py-16 lg:py-24">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-10 sm:mb-16">
             <div>
-              <h2 className="text-4xl font-bold mb-4">{t('portfolioTitle1')} <span className="text-pink-500">{t('portfolioTitle2')}</span></h2>
-              <p className="text-slate-400 max-w-xl">{t('portfolioSub')}</p>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">{t('portfolioTitle1')} <span className="text-pink-500">{t('portfolioTitle2')}</span></h2>
+              <p className="text-slate-400 max-w-xl text-sm sm:text-base">{t('portfolioSub')}</p>
             </div>
-            <a href="https://youtube.com/@cinema24-h7v?si=bKOJtE1x8B9aQCEp" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-pink-500 font-bold hover:underline cursor-pointer">
+            <a href="https://youtube.com/@cinema24-h7v?si=bKOJtE1x8B9aQCEp" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-pink-500 font-bold hover:underline cursor-pointer text-sm sm:text-base">
               {t('ytBtn')} <ChevronRight size={20}/>
             </a>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {portfolioItems.map(item => (
               <a 
                 key={item.id} 
                 href={item.link} 
                 target="_blank" 
                 rel="noreferrer"
-                className="group relative overflow-hidden rounded-[32px] bg-slate-950 border border-slate-800 block aspect-video cursor-pointer"
+                className="group relative overflow-hidden rounded-[24px] sm:rounded-[32px] bg-slate-950 border border-slate-800 block aspect-video cursor-pointer"
               >
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
-                  <div className="p-5 bg-white rounded-full text-slate-950 shadow-2xl">
-                    <PlayCircle size={40}/>
+                  <div className="p-4 sm:p-5 bg-white rounded-full text-slate-950 shadow-2xl">
+                    <PlayCircle size={32} className="sm:w-10 sm:h-10"/>
                   </div>
                 </div>
-                <div className="absolute bottom-0 p-8 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent w-full">
-                  <div className="text-pink-500 text-xs font-bold uppercase tracking-widest mb-2">{item.category}</div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-pink-400 transition-colors">{item.title}</h3>
+                <div className="absolute bottom-0 p-6 sm:p-8 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent w-full">
+                  <div className="text-pink-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2">{item.category}</div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-pink-400 transition-colors">{item.title}</h3>
                 </div>
               </a>
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-             <a href="https://drive.google.com/drive/folders/1nLSW_lUYv-fv5Dcq-8ygfNGlCXsMql38?usp=sharing" target="_blank" rel="noreferrer" className="px-12 py-5 bg-slate-800 hover:bg-slate-700 rounded-2xl font-bold transition-all inline-flex items-center gap-3 cursor-pointer">
+          {/* Graphic Design Section */}
+          <div className="mt-20 sm:mt-24 border-t border-slate-800/50 pt-16">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-10 sm:mb-12">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">{t('graphicsTitle1')} <span className="text-blue-500">{t('graphicsTitle2')}</span></h2>
+                <p className="text-slate-400 max-w-xl text-sm sm:text-base">{t('graphicsSub')}</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {graphicItems.map(item => (
+                <a 
+                  key={item.id} 
+                  href={item.image} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="group relative overflow-hidden rounded-[20px] sm:rounded-[24px] bg-slate-950 border border-slate-800 block aspect-square sm:aspect-[4/5] cursor-pointer"
+                >
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-all duration-700 group-hover:scale-110" 
+                    onError={(e) => {
+                      e.target.onerror = null; 
+                      e.target.src = "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=400"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100">
+                    <div className="p-3 sm:p-4 bg-white rounded-full text-slate-950 shadow-2xl">
+                      <ImageIcon size={24} className="sm:w-6 sm:h-6 text-blue-500"/>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 p-4 sm:p-6 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent w-full opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                    <div className="text-blue-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 sm:mb-2">{item.category}</div>
+                    <h3 className="text-base sm:text-lg font-bold text-white">{item.title}</h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 sm:mt-16 text-center">
+             <a href="https://drive.google.com/drive/folders/1Xo7ga5pHZXPnOvHU2NG1ptAjBhrm2DIq?usp=drive_link" target="_blank" rel="noreferrer" className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-slate-800 hover:bg-slate-700 rounded-xl sm:rounded-2xl font-bold transition-all inline-flex items-center justify-center gap-3 cursor-pointer text-sm sm:text-base">
                <Layers size={20}/> {t('driveBtn')}
              </a>
           </div>
@@ -381,94 +482,92 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24">
+      <section id="contact" className="py-16 lg:py-24 bg-slate-900/30">
         <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto bg-slate-900 border border-slate-800 rounded-[40px] overflow-hidden shadow-2xl">
+          <div className="max-w-6xl mx-auto bg-slate-900 border border-slate-800 rounded-[24px] sm:rounded-[40px] overflow-hidden shadow-2xl">
             <div className="grid lg:grid-cols-2">
-              <div className="p-12 lg:p-16 space-y-12">
+              <div className="p-6 sm:p-12 lg:p-16 space-y-10 sm:space-y-12">
                 <div>
-                  <h2 className="text-4xl font-bold mb-6">{t('contactTitle1')} <span className="text-purple-500">{t('contactTitle2')}</span></h2>
-                  <p className="text-slate-400">{t('contactSub')}</p>
+                  <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">{t('contactTitle1')} <span className="text-purple-500">{t('contactTitle2')}</span></h2>
+                  <p className="text-slate-400 text-sm sm:text-base">{t('contactSub')}</p>
                 </div>
                 
-                <div className="space-y-6">
-                  {/* WhatsApp Link */}
-                  <div className="flex items-center gap-6 group">
-                    <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all"><Phone size={24}/></div>
-                    <div>
-                      <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('phoneLbl')}</div>
-                      <a href="https://wa.me/94772291528" target="_blank" rel="noreferrer" className="text-lg font-bold hover:text-purple-400 transition-colors cursor-pointer">
+                <div className="space-y-6 sm:space-y-8">
+                  <div className="flex items-center gap-4 sm:gap-6 group">
+                    <div className="min-w-[48px] h-12 sm:w-14 sm:h-14 bg-purple-500/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all"><Phone size={20} className="sm:w-6 sm:h-6"/></div>
+                    <div className="overflow-hidden">
+                      <div className="text-[10px] sm:text-sm text-slate-500 font-bold uppercase tracking-widest">{t('phoneLbl')}</div>
+                      <a href="https://wa.me/94772291528" target="_blank" rel="noreferrer" className="text-base sm:text-lg font-bold hover:text-purple-400 transition-colors cursor-pointer truncate block">
                         +94 77 229 1528
                       </a>
                     </div>
                   </div>
                   
-                  {/* Email Link */}
-                  <div className="flex items-center gap-6 group">
-                    <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><Mail size={24}/></div>
-                    <div>
-                      <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('emailLbl')}</div>
-                      <a href="mailto:nadeesha.creative@gmail.com" className="text-lg font-bold hover:text-blue-400 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-4 sm:gap-6 group">
+                    <div className="min-w-[48px] h-12 sm:w-14 sm:h-14 bg-blue-500/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><Mail size={20} className="sm:w-6 sm:h-6"/></div>
+                    <div className="overflow-hidden">
+                      <div className="text-[10px] sm:text-sm text-slate-500 font-bold uppercase tracking-widest">{t('emailLbl')}</div>
+                      <a href="mailto:nadeesha.creative@gmail.com" className="text-sm sm:text-lg font-bold hover:text-blue-400 transition-colors cursor-pointer truncate block">
                         nadeesha.creative@gmail.com
                       </a>
                     </div>
                   </div>
 
-                  {/* Location Link */}
-                  <div className="flex items-center gap-6 group">
-                    <div className="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all"><MapPin size={24}/></div>
-                    <div>
-                      <div className="text-sm text-slate-500 font-bold uppercase tracking-widest">{t('locLbl')}</div>
-                      <a href="https://www.google.com/maps/search/Deraniyagala,+Sri+Lanka" target="_blank" rel="noreferrer" className="text-lg font-bold hover:text-pink-400 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-4 sm:gap-6 group">
+                    <div className="min-w-[48px] h-12 sm:w-14 sm:h-14 bg-pink-500/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all"><MapPin size={20} className="sm:w-6 sm:h-6"/></div>
+                    <div className="overflow-hidden">
+                      <div className="text-[10px] sm:text-sm text-slate-500 font-bold uppercase tracking-widest">{t('locLbl')}</div>
+                      <a href="https://www.google.com/maps/search/Deraniyagala,+Sri+Lanka" target="_blank" rel="noreferrer" className="text-base sm:text-lg font-bold hover:text-pink-400 transition-colors cursor-pointer truncate block">
                         Deraniyagala, Sri Lanka
                       </a>
                     </div>
                   </div>
                 </div>
 
-                {/* Social Icons */}
-                <div className="flex gap-4 pt-4">
-                  <a href="https://www.facebook.com/share/1GgLDj8CJg/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:-translate-y-1 transition-all cursor-pointer">
-                    <Facebook size={20}/>
+                <div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4">
+                  <a href="https://www.facebook.com/share/1GgLDj8CJg/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:-translate-y-1 transition-all cursor-pointer">
+                    <Facebook size={18}/>
                   </a>
-                  <a href="https://youtube.com/@cinema24-h7v?si=bKOJtE1x8B9aQCEp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-red-600 hover:-translate-y-1 transition-all cursor-pointer">
-                    <Youtube size={20}/>
+                  <a href="https://youtube.com/@cinema24-h7v?si=bKOJtE1x8B9aQCEp" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-red-600 hover:-translate-y-1 transition-all cursor-pointer">
+                    <Youtube size={18}/>
                   </a>
-                  <a href="https://www.tiktok.com/@trueimpact6?_r=1&_t=ZS-94uF2mnUGJO" target="_blank" rel="noreferrer" className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-pink-600 hover:-translate-y-1 transition-all cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                  <a href="https://www.tiktok.com/@trueimpact6?_r=1&_t=ZS-94uF2mnUGJO" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-pink-600 hover:-translate-y-1 transition-all cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                  </a>
+                  <a href="https://www.linkedin.com/in/nadeesha-malith-3796933b9/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BvOQsJJPOT5W5EveE%2BjavWg%3D%3D" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-500 hover:-translate-y-1 transition-all cursor-pointer">
+                    <Linkedin size={18}/>
                   </a>
                 </div>
 
-                {/* TikTok QR Codes */}
-                <div className="pt-8 mt-8 border-t border-slate-800">
-                  <p className="text-slate-400 font-bold text-sm uppercase tracking-widest mb-4">Follow on TikTok</p>
-                  <div className="flex gap-4">
-                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl overflow-hidden border border-slate-200">
-                      <img src="/1.jpeg" alt="Nadee Editor TikTok" className="w-full h-full object-cover rounded-xl" />
+                <div className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-slate-800">
+                  <p className="text-slate-400 font-bold text-xs sm:text-sm uppercase tracking-widest mb-4">Follow on TikTok</p>
+                  <div className="flex flex-wrap gap-4">
+                    <div className="bg-white p-2 rounded-xl sm:rounded-2xl w-24 h-24 sm:w-32 sm:h-32 hover:scale-105 transition-all shadow-xl overflow-hidden border border-slate-200">
+                      <img src="/1.jpeg" alt="Nadee Editor TikTok" className="w-full h-full object-cover rounded-lg sm:rounded-xl" />
                     </div>
-                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl overflow-hidden border border-slate-200">
-                      <img src="/2.jpeg" alt="24 Cinema TikTok" className="w-full h-full object-cover rounded-xl" />
+                    <div className="bg-white p-2 rounded-xl sm:rounded-2xl w-24 h-24 sm:w-32 sm:h-32 hover:scale-105 transition-all shadow-xl overflow-hidden border border-slate-200">
+                      <img src="/2.jpeg" alt="24 Cinema TikTok" className="w-full h-full object-cover rounded-lg sm:rounded-xl" />
                     </div>
                   </div>
                 </div>
 
               </div>
 
-              <div className="bg-slate-800/50 p-12 lg:p-16 border-l border-slate-800">
-                <form className="space-y-6" onSubmit={handleFormSubmit}>
+              <div className="bg-slate-800/50 p-6 sm:p-12 lg:p-16 border-t lg:border-t-0 lg:border-l border-slate-800">
+                <form className="space-y-4 sm:space-y-6" onSubmit={handleFormSubmit}>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-400">{t('formName')}</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl focus:border-purple-500 outline-none" required />
+                    <label className="text-xs sm:text-sm font-bold text-slate-400">{t('formName')}</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-3 sm:p-4 rounded-xl focus:border-purple-500 outline-none text-sm sm:text-base" required />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-400">{t('formEmail')}</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl focus:border-purple-500 outline-none" required />
+                    <label className="text-xs sm:text-sm font-bold text-slate-400">{t('formEmail')}</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-3 sm:p-4 rounded-xl focus:border-purple-500 outline-none text-sm sm:text-base" required />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-400">{t('formMsg')}</label>
-                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl h-32 focus:border-purple-500 outline-none" required></textarea>
+                    <label className="text-xs sm:text-sm font-bold text-slate-400">{t('formMsg')}</label>
+                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-3 sm:p-4 rounded-xl h-24 sm:h-32 focus:border-purple-500 outline-none text-sm sm:text-base" required></textarea>
                   </div>
-                  <button type="submit" className="w-full py-5 bg-purple-600 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-purple-500 transition-all shadow-xl shadow-purple-900/20 cursor-pointer">
+                  <button type="submit" className="w-full py-4 sm:py-5 bg-purple-600 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-purple-500 transition-all shadow-xl shadow-purple-900/20 cursor-pointer text-sm sm:text-base">
                     <Mail size={20}/> {t('formSend')}
                   </button>
                 </form>
@@ -478,10 +577,10 @@ const App = () => {
         </div>
       </section>
 
-      <footer className="py-12 border-t border-slate-900 text-center">
-        <div className="container mx-auto px-6">
-          <div className="text-2xl font-bold text-white mb-4 tracking-tighter">Nadee_Editor</div>
-          <p className="text-slate-500 text-sm">© 2026 K.D Nadisha Malith Mihiranga. All rights reserved.</p>
+      <footer className="py-8 sm:py-12 border-t border-slate-900 text-center px-6">
+        <div className="container mx-auto">
+          <div className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4 tracking-tighter">Nadee_Editor</div>
+          <p className="text-slate-500 text-xs sm:text-sm">© 2026 K.D Nadisha Malith Mihiranga. All rights reserved.</p>
         </div>
       </footer>
     </div>
