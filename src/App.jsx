@@ -59,7 +59,7 @@ const translations = {
     navHome: "முகப்பு", navAbout: "பற்றி", navServices: "சேவைகள்", navPortfolio: "படைப்புகள்", navContact: "தொடர்பு",
     heroAvailable: "Available for Freelance Work",
     heroGreeting: "வணக்கம், நான் K.D நதிஷ மலித் மிஹிரங்க",
-    heroDesc: "நவீன தொழில்நுட்பத்தை எல்லையற்ற கற்பனையுடன் கலந்து சிறந்த காட்சி வடிவமைப்பின் மூலம் உங்கள் யோசனைகளை உயிர்ப்பிக்கிறேன்.",
+    heroDesc: "நவீன தொழில்நுட்பத்தை எல்லையற்ற கற்பனையுடன் கலந்து சிறந்த காட்சி வடிவமைப்பு மூலம் உங்கள் யோசனைகளை உயிர்ப்பிக்கிறேன்.",
     btnViewWork: "படைப்புகளைக் காண்", btnContact: "தொடர்பு கொள்க",
     aboutTitle1: "என்னை ", aboutTitle2: "பற்றி",
     aboutP1: "நான் K.D நதிஷ மலித் மிஹிரங்க, ஒரு தொழில்முறை வீடியோ எடிட்டர், கிராஃபிக் டிசைனர் மற்றும் வீடியோகிராஃபர். இலங்கையின் முன்னணி நிறுவனமான விஜய கிராபிக்ஸ் இல் எனது மல்டிமீடியா கல்வியை முடித்தேன்.",
@@ -71,7 +71,7 @@ const translations = {
     aiCreationsTitle1: "எனது ", aiCreationsTitle2: "AI படைப்புகள்",
     aiCreationsSub: "நவீன AI தொழில்நுட்பங்களைப் பயன்படுத்தி உருவாக்கப்பட்ட பட வடிவமைப்புகள், சினிமா வீடியோக்கள், அனிமேஷன்கள் மற்றும் இசை வடிவமைப்புகளின் தொகுப்பு.",
     portfolioTitle1: "தொழில்முறை வீடியோ ", portfolioTitle2: "படைப்புகள்",
-    portfolioSub: "நான் எடிட் செய்த சில குறும்படங்கள், விளம்பரங்கள் மற்றும் ஆக்கபூர்வமான வீடியோக்களை இங்கே பார்க்கலாம்.",
+    portfolioSub: "நான் எடிட் செய்த சில குறும்படங்கள், விளம்பரங்கள் மற்றும் ஆக்கபூர்වமான வீடியோக்களை இங்கே பார்க்கலாம்.",
     testimonialsTitle1: "வாடிக்கையாளர் ", testimonialsTitle2: "கருத்து",
     statsProjects: "முடிக்கப்பட்ட திட்டங்கள்", statsExperience: "வருட அனுபவம்", statsClients: "மகிழ்ச்சியான வாடிக்கையாளர்கள்",
     contactTitle1: "தொடர்பு ", contactTitle2: "கொள்ளுங்கள்",
@@ -90,6 +90,8 @@ const App = () => {
   const [clientBusiness, setClientBusiness] = useState('');
   const [aiConcept, setAiConcept] = useState(null);
   const [isGeneratingConcept, setIsGeneratingConcept] = useState(false);
+  
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -105,16 +107,27 @@ const App = () => {
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+    const whatsappMessage = `*New Inquiry from Website*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Message:* ${message}`;
+    const whatsappUrl = `https://wa.me/94772291528?text=${whatsappMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const generateConcept = async () => {
     if (!clientBusiness.trim()) return;
     setIsGeneratingConcept(true);
     setAiConcept(null);
-    
-    const apiKey = ""; // API Key provided by execution environment
+    const apiKey = ""; 
     let promptLang = 'Sinhala';
     if (selectedLanguage === 'en') promptLang = 'English';
     if (selectedLanguage === 'ta') promptLang = 'Tamil';
-    
     const prompt = `Create a creative 30-second video script and color palette for business: "${clientBusiness}" in ${promptLang} language. Be cinematic and creative.`;
 
     try {
@@ -180,7 +193,6 @@ const App = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-slate-900 border-t border-slate-800 p-6 space-y-4 absolute top-full left-0 w-full shadow-2xl animate-in slide-in-from-top duration-300">
             {['home', 'about', 'services', 'portfolio', 'contact'].map(sec => (
@@ -245,24 +257,40 @@ const App = () => {
                 <p>{t('aboutP2')}</p>
               </div>
               <div className="grid grid-cols-3 gap-8 pt-8">
-                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800">
+                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all">
                   <div className="text-3xl font-bold text-white">50+</div>
                   <div className="text-xs text-slate-500 uppercase mt-2 tracking-widest">{t('statsProjects')}</div>
                 </div>
-                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800">
+                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all">
                   <div className="text-3xl font-bold text-white">1+</div>
                   <div className="text-xs text-slate-500 uppercase mt-2 tracking-widest">{t('statsExperience')}</div>
                 </div>
-                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800">
+                <div className="text-center p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all">
                   <div className="text-3xl font-bold text-white">100%</div>
                   <div className="text-xs text-slate-500 uppercase mt-2 tracking-widest">{t('statsClients')}</div>
                 </div>
               </div>
             </div>
+            
+            {/* --- Enhanced Profile Image Section --- */}
             <div className="order-1 lg:order-2">
-              <div className="aspect-square bg-slate-900 border border-slate-800 rounded-[40px] flex items-center justify-center p-12 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent"></div>
-                <User size={180} className="text-slate-800 relative z-10" />
+              <div className="relative group">
+                {/* Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-[50px] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                
+                <div className="aspect-[3/4] md:aspect-square bg-slate-900 border-2 border-slate-800 rounded-[48px] flex items-center justify-center relative overflow-hidden shadow-2xl transition-all duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent z-10 pointer-events-none"></div>
+                  <img 
+                    src="/profile.jpg" 
+                    alt="Nadeesha Malith Profile" 
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    style={{ objectPosition: 'center 20%' }}
+                    onError={(e) => {
+                      e.target.onerror = null; 
+                      e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -415,10 +443,10 @@ const App = () => {
                 <div className="pt-8 mt-8 border-t border-slate-800">
                   <p className="text-slate-400 font-bold text-sm uppercase tracking-widest mb-4">Follow on TikTok</p>
                   <div className="flex gap-4">
-                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl">
+                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl overflow-hidden border border-slate-200">
                       <img src="/1.jpeg" alt="Nadee Editor TikTok" className="w-full h-full object-cover rounded-xl" />
                     </div>
-                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl">
+                    <div className="bg-white p-2 rounded-2xl w-32 h-32 hover:scale-105 transition-all shadow-xl overflow-hidden border border-slate-200">
                       <img src="/2.jpeg" alt="24 Cinema TikTok" className="w-full h-full object-cover rounded-xl" />
                     </div>
                   </div>
@@ -427,20 +455,20 @@ const App = () => {
               </div>
 
               <div className="bg-slate-800/50 p-12 lg:p-16 border-l border-slate-800">
-                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-6" onSubmit={handleFormSubmit}>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-400">{t('formName')}</label>
-                    <input type="text" className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl focus:border-purple-500 outline-none" required />
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl focus:border-purple-500 outline-none" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-400">{t('formEmail')}</label>
-                    <input type="email" className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl focus:border-purple-500 outline-none" required />
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl focus:border-purple-500 outline-none" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-400">{t('formMsg')}</label>
-                    <textarea className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl h-32 focus:border-purple-500 outline-none" required></textarea>
+                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-slate-950 border border-slate-700 p-4 rounded-xl h-32 focus:border-purple-500 outline-none" required></textarea>
                   </div>
-                  <button className="w-full py-5 bg-purple-600 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-purple-500 transition-all shadow-xl shadow-purple-900/20 cursor-pointer">
+                  <button type="submit" className="w-full py-5 bg-purple-600 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-purple-500 transition-all shadow-xl shadow-purple-900/20 cursor-pointer">
                     <Mail size={20}/> {t('formSend')}
                   </button>
                 </form>
@@ -450,7 +478,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-12 border-t border-slate-900 text-center">
         <div className="container mx-auto px-6">
           <div className="text-2xl font-bold text-white mb-4 tracking-tighter">Nadee_Editor</div>
