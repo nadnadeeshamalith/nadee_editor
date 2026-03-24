@@ -341,9 +341,33 @@ const App = () => {
               </a>
             </div>
           </div>
-          <div className="relative group">
-            <div className={`relative ${thm.bgSec} border ${thm.border} p-8 rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500 overflow-hidden shadow-2xl`}>
-               <img alt="" src="/profile.jpg" className="w-full h-full object-cover rounded-[30px]" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"; }} />
+          
+          {/* Profile Image & 4 Boxes Combined */}
+          <div className="relative mt-12 lg:mt-0 w-full max-w-md mx-auto lg:ml-auto">
+            {/* Background Glow */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-[3rem] blur-xl opacity-20 transition duration-1000"></div>
+            
+            {/* Profile Image */}
+            <div className={`relative ${thm.bgSec} border ${thm.border} p-4 sm:p-6 rounded-[40px] rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl z-10`}>
+               <img alt="" src="/profile.jpg" className="w-full aspect-[4/5] object-cover rounded-[30px]" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"; }} />
+            </div>
+
+            {/* 4 Boxes Grid Overlapping */}
+            <div className={`relative sm:absolute sm:-bottom-10 sm:-left-10 lg:-left-16 mt-6 sm:mt-0 ${thm.bgSec} border ${thm.border} p-4 sm:p-5 rounded-3xl rotate-[-4deg] hover:rotate-0 transition-transform duration-500 shadow-2xl z-20`}>
+               <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${thm.bg} rounded-2xl flex items-center justify-center border ${thm.border} hover:scale-105 transition-transform cursor-pointer`}>
+                   <Video className="text-purple-500 w-8 h-8 sm:w-10 sm:h-10"/>
+                 </div>
+                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${thm.bg} rounded-2xl flex items-center justify-center border ${thm.border} hover:scale-105 transition-transform cursor-pointer`}>
+                   <Palette className="text-blue-500 w-8 h-8 sm:w-10 sm:h-10"/>
+                 </div>
+                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${thm.bg} rounded-2xl flex items-center justify-center border ${thm.border} hover:scale-105 transition-transform cursor-pointer`}>
+                   <Camera className="text-pink-500 w-8 h-8 sm:w-10 sm:h-10"/>
+                 </div>
+                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${thm.bg} rounded-2xl flex items-center justify-center border ${thm.border} hover:scale-105 transition-transform cursor-pointer`}>
+                   <Layers className="text-emerald-500 w-8 h-8 sm:w-10 sm:h-10"/>
+                 </div>
+               </div>
             </div>
           </div>
         </div>
@@ -351,45 +375,25 @@ const App = () => {
 
       {/* --- About Section --- */}
       <section id="about" className={`py-24 ${isDarkMode ? 'bg-slate-900/30' : 'bg-slate-100/50'}`}>
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-8">
-              <h2 className={`text-4xl font-bold ${thm.textHead}`}>{t('aboutTitle1')}<span className="text-purple-500">{t('aboutTitle2')}</span></h2>
-              <div className={`space-y-6 ${thm.textMuted} text-lg leading-relaxed`}>
-                <p>{t('aboutP1')}</p>
-                <p>{t('aboutP2')}</p>
-              </div>
-              <div className="pt-6 border-t border-slate-800">
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2"><Layers className="text-purple-500"/> {t('skillsTitle')}</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {softwareSkills.map((skill, i) => (
-                    <div key={i} className={`${thm.bgSec} p-4 rounded-xl border ${thm.border}`}>
-                      <div className="text-sm font-bold mb-2">{skill.name}</div>
-                      <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                        <div className={`h-full ${skill.color}`} style={{ width: `${skill.level}%` }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="space-y-8">
+            <h2 className={`text-4xl font-bold ${thm.textHead}`}>{t('aboutTitle1')}<span className="text-purple-500">{t('aboutTitle2')}</span></h2>
+            <div className={`space-y-6 ${thm.textMuted} text-lg leading-relaxed`}>
+              <p>{t('aboutP1')}</p>
+              <p>{t('aboutP2')}</p>
             </div>
-            <div className={`p-8 ${thm.bgSec} border ${thm.border} rounded-[40px] shadow-2xl`}>
-               <div className="space-y-6">
-                 <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-500"><Award size={24}/></div>
-                   <div>
-                     <div className="text-2xl font-bold">100+</div>
-                     <div className={`text-xs ${thm.textMuted} uppercase font-bold tracking-widest`}>{t('statsProjects')}</div>
-                   </div>
-                 </div>
-                 <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-500"><Users size={24}/></div>
-                   <div>
-                     <div className="text-2xl font-bold">50+</div>
-                     <div className={`text-xs ${thm.textMuted} uppercase font-bold tracking-widest`}>{t('statsClients')}</div>
-                   </div>
-                 </div>
-               </div>
+            <div className="pt-8 border-t border-slate-800">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2"><Layers className="text-purple-500"/> {t('skillsTitle')}</h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {softwareSkills.map((skill, i) => (
+                  <div key={i} className={`${thm.bgSec} p-4 rounded-xl border ${thm.border}`}>
+                    <div className="text-sm font-bold mb-2">{skill.name}</div>
+                    <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                      <div className={`h-full ${skill.color}`} style={{ width: `${skill.level}%` }}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
