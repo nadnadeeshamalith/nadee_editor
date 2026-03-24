@@ -567,55 +567,55 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Contact Section --- */}
-      <section id="contact" className={`py-24 ${isDarkMode ? 'bg-slate-900/30' : 'bg-slate-100/50'}`}>
-        <div className="container mx-auto px-6 max-w-5xl">
-          <div className={`${thm.bgSec} border ${thm.border} rounded-[40px] overflow-hidden shadow-2xl grid lg:grid-cols-2`}>
-            <div className="p-12 space-y-10">
-              <h2 className="text-4xl font-bold">{t('contactTitle1')} <span className="text-purple-500">{t('contactTitle2')}</span></h2>
+      {/* --- Samparka Vibhaga (Contact Section) --- */}
+      <section id="contact" className={`py-16 sm:py-24 ${isDarkMode ? 'bg-slate-900/30' : 'bg-slate-100/50'}`}>
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+          <div className={`${thm.bgSec} border ${thm.border} rounded-3xl sm:rounded-[40px] overflow-hidden shadow-2xl grid lg:grid-cols-2`}>
+            <div className="p-6 sm:p-8 lg:p-12 space-y-8 lg:space-y-10">
+              <h2 className="text-3xl sm:text-4xl font-bold">{t('contactTitle1')} <span className="text-purple-500">{t('contactTitle2')}</span></h2>
               <div className="space-y-6">
                 <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all"><Phone size={20}/></div>
+                  <div className="w-12 h-12 min-w-[3rem] bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all"><Phone size={20}/></div>
                   <div className="overflow-hidden">
                     <div className={`text-[10px] ${thm.textMuted} font-bold uppercase tracking-widest`}>{t('phoneLbl')}</div>
-                    <a href={`https://wa.me/${CONTACT_INFO.whatsapp}`} target="_blank" rel="noreferrer" className="font-bold text-lg hover:text-purple-500 block truncate">{CONTACT_INFO.phone}</a>
+                    <a href={`https://wa.me/${CONTACT_INFO.whatsapp}`} target="_blank" rel="noreferrer" className="font-bold text-base sm:text-lg hover:text-purple-500 block break-words">{CONTACT_INFO.phone}</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><Mail size={20}/></div>
+                  <div className="w-12 h-12 min-w-[3rem] bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><Mail size={20}/></div>
                   <div className="overflow-hidden">
                     <div className={`text-[10px] ${thm.textMuted} font-bold uppercase tracking-widest`}>{t('emailLbl')}</div>
-                    <a href={`mailto:${CONTACT_INFO.email}`} className="font-bold text-lg hover:text-blue-500 truncate block">{CONTACT_INFO.email}</a>
+                    <a href={`mailto:${CONTACT_INFO.email}`} className="font-bold text-base sm:text-lg hover:text-blue-500 block break-words">{CONTACT_INFO.email}</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-pink-500/10 rounded-xl flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all"><MapPin size={20}/></div>
+                  <div className="w-12 h-12 min-w-[3rem] bg-pink-500/10 rounded-xl flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all"><MapPin size={20}/></div>
                   <div className="overflow-hidden">
                     <div className={`text-[10px] ${thm.textMuted} font-bold uppercase tracking-widest`}>{t('locLbl')}</div>
-                    <div className="font-bold text-lg">{CONTACT_INFO.address}</div>
+                    <div className="font-bold text-base sm:text-lg break-words">{CONTACT_INFO.address}</div>
                   </div>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <a href={CONTACT_INFO.facebook} target="_blank" rel="noreferrer" className={`w-12 h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-blue-600 hover:text-white`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <div className="flex flex-wrap gap-3 sm:gap-4">
+                <a href={CONTACT_INFO.facebook} target="_blank" rel="noreferrer" className={`w-10 h-10 sm:w-12 sm:h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-blue-600 hover:text-white`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
-                <a href={CONTACT_INFO.youtube} target="_blank" rel="noreferrer" className={`w-12 h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-red-600 hover:text-white`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                <a href={CONTACT_INFO.youtube} target="_blank" rel="noreferrer" className={`w-10 h-10 sm:w-12 sm:h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-red-600 hover:text-white`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
                 </a>
-                <a href={CONTACT_INFO.linkedin} target="_blank" rel="noreferrer" className={`w-12 h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-blue-500 hover:text-white`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                <a href={CONTACT_INFO.linkedin} target="_blank" rel="noreferrer" className={`w-10 h-10 sm:w-12 sm:h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-blue-500 hover:text-white`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                 </a>
-                <a href={CONTACT_INFO.tiktok} target="_blank" rel="noreferrer" className={`w-12 h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-pink-600 hover:text-white`}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                <a href={CONTACT_INFO.tiktok} target="_blank" rel="noreferrer" className={`w-10 h-10 sm:w-12 sm:h-12 ${thm.iconBtn} rounded-xl flex items-center justify-center transition-all hover:bg-pink-600 hover:text-white`}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
                 </a>
               </div>
             </div>
-            <form className="p-12 bg-slate-800/20 space-y-6" onSubmit={handleFormSubmit}>
-               <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder={t('formName')} className={`w-full ${thm.inputBg} p-4 rounded-xl outline-none focus:border-purple-500 border transition-all`} required />
-               <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder={t('formEmail')} className={`w-full ${thm.inputBg} p-4 rounded-xl outline-none focus:border-purple-500 border transition-all`} required />
-               <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder={t('formMsg')} className={`w-full ${thm.inputBg} p-4 rounded-xl h-32 outline-none focus:border-purple-500 border transition-all`} required></textarea>
-               <button type="submit" className="w-full py-4 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 shadow-xl shadow-purple-900/20">{t('formSend')}</button>
+            <form className="p-6 sm:p-8 lg:p-12 bg-slate-800/20 space-y-5 sm:space-y-6" onSubmit={handleFormSubmit}>
+               <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder={t('formName')} className={`w-full ${thm.inputBg} p-3 sm:p-4 rounded-xl outline-none focus:border-purple-500 border transition-all`} required />
+               <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder={t('formEmail')} className={`w-full ${thm.inputBg} p-3 sm:p-4 rounded-xl outline-none focus:border-purple-500 border transition-all`} required />
+               <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder={t('formMsg')} className={`w-full ${thm.inputBg} p-3 sm:p-4 rounded-xl h-24 sm:h-32 outline-none focus:border-purple-500 border transition-all`} required></textarea>
+               <button type="submit" className="w-full py-3 sm:py-4 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 shadow-xl shadow-purple-900/20">{t('formSend')}</button>
             </form>
           </div>
         </div>
