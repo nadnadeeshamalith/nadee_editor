@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // Uka Local VS Code ukampi apnaqañataki, akham line ukat // apsuñamawa.
 // import './index.css'; 
-import { Video, Palette, Camera, Layers, PlayCircle, MonitorPlay, Mail, Phone, MapPin, Menu, X, ChevronRight, Image as ImageIcon, Globe2, Award, Users, CheckCircle, Quote, User, Download, Check, Leaf, Store, Clock, ExternalLink, Sun, Moon, Music } from 'lucide-react';
+import { Video, Palette, Camera, Layers, PlayCircle, MonitorPlay, Mail, Phone, MapPin, Menu, X, ChevronRight, Image as ImageIcon, Globe2, Award, Users, CheckCircle, Quote, User, Download, Check, Leaf, Store, Clock, ExternalLink, Sun, Moon, Music, Globe } from 'lucide-react';
 
 // --- Uñt'ayawi (Contact Details) ---
 const CONTACT_INFO = {
@@ -18,7 +18,7 @@ const CONTACT_INFO = {
 // --- Aru (Translations Dictionary) ---
 const translations = {
   si: {
-    navHome: "මුල් පිටුව", navAbout: "මා ගැන", navServices: "ව්‍යාපාර", navPortfolio: "නිර්මාණ", navContact: "සම්බන්ධ වන්න",
+    navHome: "මුල් පිටුව", navAbout: "මා ගැන", navServices: "වෙබ්සයිට්", navPortfolio: "නිර්මාණ", navContact: "සම්බන්ධ වන්න",
     heroAvailable: "පූර්ණ කාලීන රැකියා අවස්ථාවන් සඳහා සූදානම්",
     heroGreeting: "ආයුබෝවන්, මම K.D නදිශ මලිත් මිහිරංග",
     heroDesc: "සීමාවන් නොමැති පරිකල්පනයට නවීන තාක්ෂණයේ ජීවය මුසු කරමින්, ආයතනික අරමුණු සාක්ෂාත් කරන විශිෂ්ටතම දෘශ්‍ය නිර්මාණකරණය.",
@@ -27,8 +27,8 @@ const translations = {
     aboutP1: "මම K.D නදිශ මලිත් මිහිරංග. මම වෘත්තීය මට්ටමේ වීඩියෝ සංස්කරණ ශිල්පියෙකු, ග්‍රැෆික් නිර්මාණකරුවෙකු සහ ඡායාරූප/වීඩියෝ ශිල්පියෙකු වෙමි. මාගේ වෘත්තීය බහුමාධ්‍ය අධ්‍යාපනය (Multimedia Education) මා සාර්ථකව සම්පූර්ණ කළේ ශ්‍රී ලංකාවේ ප්‍රමුඛතම ආයතනයක් වන Wijeya Graphics හිදීය.",
     aboutP2: "එහිදී 3D සජීවීකරණය ඇතුළු විෂය පථයන් රැසක් මා හැදෑරුවද, මගේ දැඩි ආශාව සහ ඉහළම දක්ෂතාවය ඇත්තේ වීඩියෝ එඩිටින්, ග්‍රැෆික් ඩිසයින් සහ වීඩියෝග්‍රැෆි යන අංශයන්හි වේ. ඕනෑම වෘත්තීය වටපිටාවක කණ්ඩායමක් සමඟ එක්ව ඉහළම ප්‍රතිඵල ලබාදීමට මා සූදානම්.",
     skillsTitle: "මගේ කුසලතා (Skills)",
-    servicesTitle1: "මගේ ", servicesTitle2: "ව්‍යාපාර",
-    servicesSub: "මගේ පෞද්ගලික ව්‍යාපාරික ආරම්භයන් සහ ඉදිරි සැලසුම්.",
+    servicesTitle1: "මගේ ", servicesTitle2: "වෙනත් වෙබ්සයිට්",
+    servicesSub: "මා විසින් නිර්මාණය කරන ලද සහ දැනට පවත්වාගෙන යනු ලබන වෙබ් අඩවි එකතුව.",
     fbTitle1: "AI Music ", fbTitle2: "වීඩියෝ",
     fbSub: "මා විසින් නිර්මාණය කළ AI Music වීඩියෝ.",
     casualTitle1: "විනෝදාත්මක ", casualTitle2: "වීඩියෝ සහ Reels",
@@ -51,7 +51,7 @@ const translations = {
     driveBtn: "Google Drive හරහා සම්පූර්ණ නිර්මාණ බලන්න", ytBtn: "මගේ YouTube නාලිකාව"
   },
   en: {
-    navHome: "Home", navAbout: "About", navServices: "Ventures", navPortfolio: "Portfolio", navContact: "Contact",
+    navHome: "Home", navAbout: "About", navServices: "Websites", navPortfolio: "Portfolio", navContact: "Contact",
     heroAvailable: "Open to Full-Time Career Opportunities",
     heroGreeting: "Hello, I am K.D Nadisha Malith Mihiranga",
     heroDesc: "A dedicated creative professional blending modern technology with limitless imagination to achieve corporate visual goals.",
@@ -60,8 +60,8 @@ const translations = {
     aboutP1: "I am K.D Nadisha Malith Mihiranga, a professional Video Editor, Graphic Designer, and Videographer. I successfully completed my professional multimedia education at Wijeya Graphics, a leading institute in Sri Lanka.",
     aboutP2: "Although I studied various subjects including 3D Animation, my core passion and highest skills lie in Video Editing, Graphic Design, and Videography. I am ready to collaborate with professional teams to deliver outstanding results.",
     skillsTitle: "Software Proficiency",
-    servicesTitle1: "Personal ", servicesTitle2: "Ventures",
-    servicesSub: "My personal business startups and upcoming plans.",
+    servicesTitle1: "My ", servicesTitle2: "Other Websites",
+    servicesSub: "A collection of websites designed and maintained by me.",
     fbTitle1: "AI Music ", fbTitle2: "Videos",
     fbSub: "My creative AI Music videos.",
     casualTitle1: "Casual ", casualTitle2: "Videos & Reels",
@@ -84,17 +84,17 @@ const translations = {
     driveBtn: "View Full Portfolio on Drive", ytBtn: "My YouTube Channel"
   },
   ta: {
-    navHome: "முகப்பு", navAbout: "பற்றி", navServices: "வணிகங்கள்", navPortfolio: "படைப்புகள்", navContact: "தொடர்பு",
+    navHome: "முகப்பு", navAbout: "பற்றி", navServices: "இணையதளங்கள்", navPortfolio: "படைப்புகள்", navContact: "தொடர்பு",
     heroAvailable: "முழுநேர வேலை வாய்ப்புகளுக்கு தயாராக உள்ளது",
     heroGreeting: "வணக்கம், நான் K.D நதிஷ மலித் மிஹிரங்க",
     heroDesc: "நவீன தொழில்நுட்பத்தை எல்லையற்ற கற்பனையுடன் கலந்து நிறுவனத்தின் காட்சி இலக்குகளை அடையும் ஒரு படைப்பு நிபுணர்.",
     btnViewWork: "படைப்புகளைக் காண்", btnContact: "தொடர்பு கொள்க", btnDownloadCV: "CV ஐப் பதிவிறக்குக",
     aboutTitle1: "என்னை ", aboutTitle2: "பற்றி",
-    aboutP1: "நான் K.D நதிஷ மலித் மிஹிரங்க, ஒரு தொழில்முறை வீடியோ எடிட்டர், கிராஃபிக் டிசைனர் மற்றும் வீடியோகிராஃபர். இலங்கையின் முன்னணி நிறுவனமான Wijeya Graphics இல் எனது மல்டிமீடியா கல்வியை முடித்தேன்.",
+    aboutP1: "நான் K.D நதிஷ மலித் மிஹිරங்க, ஒரு தொழில்முறை வீடியோ எடிட்டர், கிராஃபிக் டிசைனர் மற்றும் வீடியோகிராஃபர். இலங்கையின் முன்னணி நிறுவனமான Wijeya Graphics இல் எனது மல்டிமீடியா கல்வியை முடித்தேன்.",
     aboutP2: "நான் 3D அனிமேஷன் உட்பட பல பாடங்களைப் படித்தாலும், எனது முக்கிய ஆர்வம் வீடியோ எடிட்டிங் மற்றும் கிராஃபிக் டிசைன் ஆகும்.",
     skillsTitle: "மென்பொருள் திறன்கள்",
-    servicesTitle1: "தனிப்பட்ட ", servicesTitle2: "வணிகங்கள்",
-    servicesSub: "எனது தனிப்பட்ட வணிக தொடக்கங்கள் மற்றும் திட்டங்கள்.",
+    servicesTitle1: "எனது ", servicesTitle2: "பிற இணையதளங்கள்",
+    servicesSub: "நான் உருவாக்கிய மற்றும் பராமரிக்கும் இணையதளங்களின் தொகுப்பு.",
     fbTitle1: "AI Music ", fbTitle2: "வீடியோக்கள்",
     fbSub: "நான் உருவாக்கிய AI Music வீடியோக்கள்.",
     casualTitle1: "சாதாரண ", casualTitle2: "வீடியோக்கள் & ரீல்ஸ்",
@@ -140,13 +140,13 @@ const venturesList = [
     }
   },
   {
-    title: { si: "නව ව්‍යාපාරය", en: "New Venture", ta: "புதிய வணிகம்" },
-    status: { si: "ළඟදීම...", en: "Coming Soon...", ta: "விரைவில்..." },
-    icon: Store, link: "#", isReady: false,
+    title: { si: "මගේ නව වෙබ්සයිට් එක", en: "My New Portfolio", ta: "எனது புதிய போர்ட்ஃபோலியோ" },
+    status: { si: "වෙබ් අඩවියට පිවිසෙන්න", en: "Visit Website", ta: "இணையதளத்திற்குச் செல்லவும்" },
+    icon: Globe, link: "https://nadee-portfolio-2rh2.vercel.app", isReady: true,
     features: {
-      si: ["නව නිෂ්පාදන", "සුවිශේෂී සේවාවන්", "ළඟදීම විවෘත වේ"],
-      en: ["New Products", "Exclusive Services", "Opening Soon"],
-      ta: ["புதிய தயாரிப்புகள்", "பிரத்யேக சேவைகள்", "விரைவில் திறக்கப்படும்"]
+      si: ["නිර්මාණාත්මක පෝට්ෆෝලියෝව", "නවීනතම අත්දැකීමක්", "සියලු නිර්මාණ එක තැනක"],
+      en: ["Creative Portfolio", "Modern Experience", "All works in one place"],
+      ta: ["ஆக்கபூர்வமான போர்ட்ஃபோலியோ", "நவீன அனுபவம்", "அனைத்து படைப்புகளும் ஒரே இடத்தில்"]
     }
   },
   {
@@ -418,9 +418,15 @@ const App = () => {
                     <li key={fi} className={`flex items-center gap-2 text-sm ${thm.textMuted}`}><CheckCircle size={16} className="text-emerald-500"/> {f}</li>
                   ))}
                 </ul>
-                <button disabled={!v.isReady} className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${v.isReady ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-slate-800 text-slate-500 cursor-not-allowed'}`}>
-                  {v.status[selectedLanguage]}
-                </button>
+                {v.link !== "#" ? (
+                  <a href={v.link} target="_blank" rel="noreferrer" className="block w-full py-4 rounded-xl font-bold text-sm text-center transition-all bg-emerald-600 text-white hover:bg-emerald-700">
+                    {v.status[selectedLanguage]}
+                  </a>
+                ) : (
+                  <button disabled={!v.isReady} className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${v.isReady ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-slate-800 text-slate-500 cursor-not-allowed'}`}>
+                    {v.status[selectedLanguage]}
+                  </button>
+                )}
               </div>
             ))}
           </div>
@@ -471,7 +477,7 @@ const App = () => {
               {fbVideos2.map((item, idx) => (
                 <a key={`fb2-${idx}`} href={item.link} target="_blank" rel="noreferrer" className={`group relative w-full max-w-[267px] aspect-[9/16] ${thm.bgSec} border ${thm.border} rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 flex items-center justify-center bg-black cursor-pointer`}>
                   <img alt="" src={item.image} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-30 transition-opacity duration-700" />
-                  <PlayCircle size={64} className="text-white relative z-10 opacity-90 group-hover:scale-110 group-hover:text-purple-500 transition-all duration-300 drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]" />
+                  <PlayCircle size={64} className="text-white relative z-10 opacity-90 group-hover:scale-110 group-hover:text-blue-500 transition-all duration-300 drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]" />
                   <div className="absolute bottom-4 left-4 right-4 text-center z-10">
                     <h4 className="text-white font-bold text-sm drop-shadow-md">{item.title}</h4>
                   </div>
