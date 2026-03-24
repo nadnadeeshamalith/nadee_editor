@@ -121,11 +121,11 @@ const translations = {
 // --- Yatiñanaka (Skills) ---
 const softwareSkills = [
   { name: "Adobe Premiere Pro", level: 90, color: "bg-purple-500" },
-  { name: "Adobe Photoshop", level: 80, color: "bg-blue-500" },
-  { name: "Artificial Intelligence (AI)", level: 80, color: "bg-pink-500" },
-  { name: "Adobe Illustrator", level: 75, color: "bg-orange-500" },
-  { name: "After Effects", level: 60, color: "bg-indigo-500" },
-  { name: "DaVinci Resolve", level: 40, color: "bg-emerald-500" }
+  { name: "Adobe After Effects", level: 85, color: "bg-indigo-500" },
+  { name: "Adobe Photoshop", level: 85, color: "bg-blue-500" },
+  { name: "Adobe Illustrator", level: 80, color: "bg-orange-500" },
+  { name: "Figma & CorelDRAW", level: 75, color: "bg-pink-500" },
+  { name: "3Ds Max / Maya (Basic)", level: 60, color: "bg-emerald-500" }
 ];
 
 const venturesList = [
@@ -336,7 +336,7 @@ const App = () => {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
               <button onClick={() => scrollToSection('portfolio')} className={`w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 ${isDarkMode ? 'bg-white text-slate-950' : 'bg-slate-900 text-white'} rounded-2xl font-bold hover:scale-105 transition-all shadow-xl cursor-pointer text-center`}>{t('btnViewWork')}</button>
               <button onClick={() => scrollToSection('contact')} className={`w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border ${thm.border} ${thm.bgSec} rounded-2xl font-bold hover:border-purple-500 transition-all cursor-pointer text-center`}>{t('btnContact')}</button>
-              <a href="/cv.pdf" download className={`w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-purple-600/50 text-purple-600 ${isDarkMode ? 'bg-purple-600/10' : 'bg-purple-50'} rounded-2xl font-bold hover:bg-purple-600 hover:text-white transition-all cursor-pointer text-center flex items-center justify-center gap-2`}>
+              <a href="/Nadeesha_Video_Editor_aCV.pdf" download="Nadeesha_Video_Editor_CV.pdf" className={`w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-purple-600/50 text-purple-600 ${isDarkMode ? 'bg-purple-600/10' : 'bg-purple-50'} rounded-2xl font-bold hover:bg-purple-600 hover:text-white transition-all cursor-pointer text-center flex items-center justify-center gap-2`}>
                 <Download size={20}/> {t('btnDownloadCV')}
               </a>
             </div>
